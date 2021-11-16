@@ -1,20 +1,6 @@
-# Opinionated Laravel Template
+# The official PestPHP news site
 
-This is a template I use when starting a new Laravel project. It is opinionated and uses the conventions I prefer to work with day-in, day-out.
+Coming soon...
 
-## Installation
-
-You can create a new project via composer:
-
-```bash
-composer create-project lukeraymonddowning/laravel-template
-```
-
-## Toolset
-
-The created application is configured with the following tools:
-
-- [Pest PHP](https://pestphp.com)
-- [Pest Parallel](https://pestphp.com/docs/plugins/parallel)
-- [PHP CS Fixer](https://github.com/FriendsOfPHP/PHP-CS-Fixer)
-- [LaraStan](https://github.com/nunomaduro/larastan)
+This site is being built in public in the "Pest in Practice" series by [Luke Downing](https://github.com/lukeraymonddowning).
+If you would like to contribute, we're open to ideas and PRs.
