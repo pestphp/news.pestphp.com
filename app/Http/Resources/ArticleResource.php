@@ -21,7 +21,9 @@ final class ArticleResource extends JsonResource
      */
     public function toArray($request): array
     {
-        $content = $this->resource->content->toHtml()->getContent();
+        $content = $this->resource->is_markdown
+            ? $this->resource->content->toHtml()->getContent()
+            : $this->resource->content;
 
         return [
             'id' => $this->resource->id,
