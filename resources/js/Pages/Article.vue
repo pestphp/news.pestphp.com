@@ -6,7 +6,7 @@
         <Heading class="mt-6">{{ article.title }}</Heading>
         <div class="mt-1 flex space-x-1 text-sm text-gray-500">
             <time :datetime="article.publish_date.iso">
-                {{ article.publish_date.display }}
+                {{ article.publish_date.diff }}
             </time>
             <span aria-hidden="true">&middot;</span>
             <span>

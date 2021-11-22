@@ -20480,7 +20480,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
       }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("time", {
         datetime: $props.article.publish_date.iso
-      }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.article.publish_date.display), 9
+      }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.article.publish_date.diff), 9
       /* TEXT, PROPS */
       , _hoisted_2), _hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(Math.ceil($props.article.read_time)) + " minute read ", 1
       /* TEXT */
