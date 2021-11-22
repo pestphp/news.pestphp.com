@@ -1,10 +1,13 @@
 <template>
-  Welcome to the blog!
+    <Head></Head>
+    Welcome to the blog!
 </template>
 
 <script>
+import Head from "../Shared/Meta/Head"
 
 export default {
-    name: "Blog"
+    name: "Blog",
+    components: {Head}
 }
 </script>
