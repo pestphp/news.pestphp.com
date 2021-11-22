@@ -12,8 +12,8 @@ abstract class JsonResource extends BaseJsonResource
     /**
      * @return array<string, mixed>
      */
-    public function forInertia(?Request $request = null): array
+    public function forInertia(Request $request): array
     {
-        return $this->toResponse($request ?? request())->getData(true);
+        return $this->toResponse($request)->getData(true);
     }
 }
