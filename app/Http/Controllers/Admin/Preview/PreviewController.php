@@ -12,10 +12,10 @@ use Wink\WinkPost;
 
 final class PreviewController extends Controller
 {
-    public function __invoke(Request $request, WinkPost $post): Response
+    public function __invoke(Request $request, WinkPost $article): Response
     {
         return inertia('Article', [
-            'article' => ArticleResource::make($post)->forInertia($request),
+            'article' => ArticleResource::make($article)->forInertia($request),
         ]);
     }
 }
