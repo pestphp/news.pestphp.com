@@ -922,17 +922,13 @@ select {
   bottom: 0px;
   left: 0px;
 }
-.mx-auto {
-  margin-left: auto;
-  margin-right: auto;
-}
-.my-8 {
-  margin-top: 2rem;
-  margin-bottom: 2rem;
-}
 .my-12 {
   margin-top: 3rem;
   margin-bottom: 3rem;
+}
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
 }
 .mt-8 {
   margin-top: 2rem;
@@ -954,12 +950,6 @@ select {
 }
 .mt-3 {
   margin-top: 0.75rem;
-}
-.mb-2 {
-  margin-bottom: 0.5rem;
-}
-.mb-4 {
-  margin-bottom: 1rem;
 }
 .ml-1 {
   margin-left: 0.25rem;

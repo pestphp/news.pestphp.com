@@ -14,8 +14,16 @@
             </span>
         </div>
 
-        <Info v-if="preview" class="my-12" :href="`/wink/posts/${post.id}`">
-            You are currently in preview mode.
+        <Info v-if="$page.props.user"
+              class="my-12"
+              :href="`/wink/posts/${post.id}`"
+        >
+            {{ preview ? 'You are currently in preview.' : 'You are on the live post.' }}
+            <InertiaLink v-if="preview && post.is_published"
+               :href="route('posts.show', post.slug)"
+               class="font-medium text-blue-700 hover:text-blue-600">
+                This post is published.
+            </InertiaLink>
             <template #href>Edit Post</template>
         </Info>
 
@@ -38,10 +46,11 @@ import Container from "../Shared/Layout/Container";
 import Heading from "../Shared/Layout/Heading";
 import AuthorCentered from "../Shared/Author/Centered";
 import Info from "../Shared/Layout/Alert/Info";
+import {InertiaLink} from "@inertiajs/inertia-vue3";
 
 export default {
     name: "Post",
-    components: {Info, AuthorCentered, Heading, Container, Head},
+    components: {Info, AuthorCentered, Heading, Container, Head, InertiaLink},
     props: {
         post: {
             type: Object,

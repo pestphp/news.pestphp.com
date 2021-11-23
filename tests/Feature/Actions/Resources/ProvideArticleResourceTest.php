@@ -19,11 +19,15 @@ it("formats an posts's basic properties correctly", function (array $state, stri
     expect($result[$key])->toBe($value);
 })->with([
     [['title' => 'Hello World'], 'title', 'Hello World'],
+    [['slug' => 'foo-bar'], 'slug', 'foo-bar'],
     [['featured_image' => '/storage/some-fake-file.png'], 'featured_image', '/storage/some-fake-file.png'],
     [['featured_image_caption' => 'Pest in Practice'], 'featured_image_caption', 'Pest in Practice'],
     [['body' => 'Foo bar baz', 'markdown' => false], 'content', 'Foo bar baz'],
     [['body' => '# Foo bar baz', 'markdown' => true], 'content', "<h1>Foo bar baz</h1>\n"],
     [['publish_date' => now()->subDay()->startOfDay()], 'publish_date', ['diff' => '1 day ago', 'iso' => now()->subDay()->startOfDay()->toISOString()]],
+    [['publish_date' => now()->subDay(), 'published' => true], 'is_published', true],
+    [['publish_date' => now()->addDay(), 'published' => true], 'is_published', false],
+    [['publish_date' => now()->subDay(), 'published' => false], 'is_published', false],
     [['body' => 'foo bar baz'], 'read_time', 0.015],
 ]);
 

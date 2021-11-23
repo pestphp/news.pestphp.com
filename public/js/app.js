@@ -20145,6 +20145,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Shared_Layout_Heading__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Shared/Layout/Heading */ "./resources/js/Shared/Layout/Heading.vue");
 /* harmony import */ var _Shared_Author_Centered__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Shared/Author/Centered */ "./resources/js/Shared/Author/Centered.vue");
 /* harmony import */ var _Shared_Layout_Alert_Info__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../Shared/Layout/Alert/Info */ "./resources/js/Shared/Layout/Alert/Info.vue");
+/* harmony import */ var _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @inertiajs/inertia-vue3 */ "./node_modules/@inertiajs/inertia-vue3/dist/index.js");
+
 
 
 
@@ -20157,7 +20159,8 @@ __webpack_require__.r(__webpack_exports__);
     AuthorCentered: _Shared_Author_Centered__WEBPACK_IMPORTED_MODULE_3__["default"],
     Heading: _Shared_Layout_Heading__WEBPACK_IMPORTED_MODULE_2__["default"],
     Container: _Shared_Layout_Container__WEBPACK_IMPORTED_MODULE_1__["default"],
-    Head: _Shared_Meta_Head__WEBPACK_IMPORTED_MODULE_0__["default"]
+    Head: _Shared_Meta_Head__WEBPACK_IMPORTED_MODULE_0__["default"],
+    InertiaLink: _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_5__.InertiaLink
   },
   props: {
     post: {
@@ -20530,7 +20533,7 @@ var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
 /* HOISTED */
 );
 
-var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" You are currently in preview mode. ");
+var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" This post is published. ");
 
 var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Edit Post");
 
@@ -20559,6 +20562,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_AuthorCentered = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("AuthorCentered");
 
   var _component_Heading = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Heading");
+
+  var _component_InertiaLink = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("InertiaLink");
 
   var _component_Info = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Info");
 
@@ -20593,7 +20598,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       /* TEXT, PROPS */
       , _hoisted_2), _hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(Math.ceil($props.post.read_time)) + " minute read ", 1
       /* TEXT */
-      )]), $props.preview ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_Info, {
+      )]), _ctx.$page.props.user ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_Info, {
         key: 0,
         "class": "my-12",
         href: "/wink/posts/".concat($props.post.id)
@@ -20602,7 +20607,22 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           return [_hoisted_5];
         }),
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-          return [_hoisted_4];
+          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.preview ? 'You are currently in preview.' : 'You are on the live post.') + " ", 1
+          /* TEXT */
+          ), $props.preview && $props.post.is_published ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_InertiaLink, {
+            key: 0,
+            href: _ctx.route('posts.show', $props.post.slug),
+            "class": "font-medium text-blue-700 hover:text-blue-600"
+          }, {
+            "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+              return [_hoisted_4];
+            }),
+            _: 1
+            /* STABLE */
+
+          }, 8
+          /* PROPS */
+          , ["href"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)];
         }),
         _: 1
         /* STABLE */
