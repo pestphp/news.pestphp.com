@@ -14,6 +14,11 @@
             </span>
         </div>
 
+        <Info v-if="preview" class="my-12" :href="`/wink/posts/${post.id}`">
+            You are currently in preview mode.
+            <template #href>Edit Post</template>
+        </Info>
+
         <div v-if="post.featured_image" class="relative">
             <div class="shadow-lg absolute rounded-md w-full h-full inset-0 bg-pink-400 transform -rotate-2"></div>
             <div class="shadow-lg absolute rounded-md w-full h-full inset-0 bg-teal-400 transform rotate-2"></div>
@@ -32,13 +37,18 @@ import Head from "../Shared/Meta/Head"
 import Container from "../Shared/Layout/Container";
 import Heading from "../Shared/Layout/Heading";
 import AuthorCentered from "../Shared/Author/Centered";
+import Info from "../Shared/Layout/Alert/Info";
 
 export default {
     name: "Post",
-    components: {AuthorCentered, Heading, Container, Head},
+    components: {Info, AuthorCentered, Heading, Container, Head},
     props: {
         post: {
             type: Object,
+        },
+        preview: {
+            type: Boolean,
+            default: false,
         }
     },
 }

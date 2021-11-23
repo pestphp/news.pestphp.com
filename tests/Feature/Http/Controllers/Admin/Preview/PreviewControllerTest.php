@@ -31,5 +31,6 @@ it('returns the Post vue component', function () {
         ->assertInertia(fn (Assert $page) => $page
             ->component('Post')
             ->where('post', ['title' => 'Hello World'])
+            ->where('preview', true)
         );
 });

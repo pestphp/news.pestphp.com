@@ -13,7 +13,8 @@ use Wink\WinkPost;
 
 final class PostController extends Controller
 {
-    public function show(Request $request, WinkPost $post, ProvidesPostResource $postResourceProvider): Response {
+    public function show(Request $request, WinkPost $post, ProvidesPostResource $postResourceProvider): Response
+    {
         abort_unless($post->published, ResponseCode::HTTP_NOT_FOUND);
 
         abort_if($post->publish_date->isFuture(), ResponseCode::HTTP_NOT_FOUND);
