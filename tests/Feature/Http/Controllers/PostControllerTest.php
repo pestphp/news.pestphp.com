@@ -5,12 +5,16 @@ declare(strict_types=1);
 use App\Contracts\Actions\Resources\ProvidesPostResource;
 use Inertia\Testing\Assert;
 
-it('can display an post for a guest', function () {
-    $post = post()->create();
+it('can display a post for a guest', function () {
+    $this->expectToUseAction(ProvidesPostResource::class)
+        ->andReturn(['title' => 'My Post Title']);
 
-    $this->get(route('posts.show', $post))
+    $this->get(route('posts.show', post()->create()))
         ->assertOk()
-        ->assertInertia(fn (Assert $page) => $page->component('Post'));
+        ->assertInertia(fn (Assert $page) => $page
+            ->component('Post')
+            ->where('post', ['title' => 'My Post Title'])
+        );
 });
 
 it('will not display posts that are not set as published', function () {
@@ -25,11 +29,4 @@ it('will not display posts that have publish_date set to a future date', functio
 
     $this->get(route('posts.show', $post))
         ->assertNotFound();
-});
-
-it('uses the ProvidesPostResource action', function () {
-    $this->expectToUseAction(ProvidesPostResource::class);
-
-    $post = post()->create();
-    $this->get(route('posts.show', $post));
 });

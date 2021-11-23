@@ -6,6 +6,8 @@ namespace Tests;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
+use Mockery\CompositeExpectation;
+use Mockery\Expectation;
 
 abstract class TestCase extends BaseTestCase
 {
@@ -26,6 +28,6 @@ abstract class TestCase extends BaseTestCase
      */
     protected function expectToUseAction(string $action, string $method = 'handle')
     {
-        $this->spy($action)->shouldReceive($method)->atLeast()->once();
+        return $this->spy($action)->shouldReceive($method)->atLeast()->once();
     }
 }
