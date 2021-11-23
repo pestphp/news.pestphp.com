@@ -20,4 +20,12 @@ abstract class TestCase extends BaseTestCase
             '--path' => 'vendor/themsaid/wink/src/Migrations',
         ]);
     }
+
+    /**
+     * @param class-string $action
+     */
+    protected function expectToUseAction(string $action, string $method = 'handle')
+    {
+        $this->spy($action)->shouldReceive($method)->atLeast()->once();
+    }
 }

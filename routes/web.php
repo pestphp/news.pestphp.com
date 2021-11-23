@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ArticleController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -9,3 +10,5 @@ Route::get('/', function () {
 Route::get('/blog', function () {
     return inertia('Blog');
 })->name('blog');
+
+Route::get('/blog/{article:slug}', [ArticleController::class, 'show'])->name('articles.show');

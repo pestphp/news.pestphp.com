@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Resources;
 
+use Illuminate\Support\HtmlString;
 use Illuminate\Support\Str;
 use Wink\WinkPost;
 
@@ -21,7 +22,7 @@ final class ArticleResource extends JsonResource
      */
     public function toArray($request): array
     {
-        $content = $this->resource->is_markdown
+        $content = $this->resource->content instanceof HtmlString
             ? $this->resource->content->toHtml()->getContent()
             : $this->resource->content;
 

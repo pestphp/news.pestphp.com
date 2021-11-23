@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use Carbon\CarbonInterface;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 use Wink\WinkAuthor;
@@ -32,5 +33,13 @@ class PostFactory extends Factory
     public function forAuthor(AuthorFactory|WinkAuthor $author): self
     {
         return $this->for($author, 'author');
+    }
+
+    public function unpublished(CarbonInterface $publishDate = null): self
+    {
+        return $this->state([
+            'published' => false,
+            'publish_date' => $publishDate ?? now()->addDay(),
+        ]);
     }
 }
