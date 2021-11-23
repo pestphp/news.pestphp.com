@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -11,4 +11,4 @@ Route::get('/blog', function () {
     return inertia('Blog');
 })->name('blog');
 
-Route::get('/blog/{article:slug}', [ArticleController::class, 'show'])->name('articles.show');
+Route::get('/posts/{post:slug}', [PostController::class, 'show'])->name('posts.show');

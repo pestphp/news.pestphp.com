@@ -8,7 +8,7 @@ use Illuminate\Support\HtmlString;
 use Illuminate\Support\Str;
 use Wink\WinkPost;
 
-final class ArticleResource extends JsonResource
+final class PostResource extends JsonResource
 {
     /**
      * @var WinkPost

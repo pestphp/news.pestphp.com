@@ -7,10 +7,10 @@ namespace App\Contracts\Actions\Resources;
 use Illuminate\Http\Request;
 use Wink\WinkPost;
 
-interface ProvidesArticleResource
+interface ProvidesPostResource
 {
     /**
      * @return array<string, mixed>
      */
-    public function handle(WinkPost $article, Request $request): array;
+    public function handle(WinkPost $post, Request $request): array;
 }

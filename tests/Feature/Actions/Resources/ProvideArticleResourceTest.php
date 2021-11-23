@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-use App\Actions\Resources\ProvideArticleResource;
-use App\Contracts\Actions\Resources\ProvidesArticleResource;
+use App\Actions\Resources\ProvidePostResource;
+use App\Contracts\Actions\Resources\ProvidesPostResource;
 
 it('is the bound default in the container', function () {
-    expect($this->app->make(ProvidesArticleResource::class))
-        ->toBeInstanceOf(ProvideArticleResource::class);
+    expect($this->app->make(ProvidesPostResource::class))
+        ->toBeInstanceOf(ProvidePostResource::class);
 });
 
-it("formats an article's basic properties correctly", function (array $state, string $key, $value) {
-    $article = post()->create($state);
+it("formats an posts's basic properties correctly", function (array $state, string $key, $value) {
+    $post = post()->create($state);
 
-    $action = $this->app->make(ProvideArticleResource::class);
-    $result = $action->handle($article, request());
+    $action = $this->app->make(ProvidePostResource::class);
+    $result = $action->handle($post, request());
 
     expect($result[$key])->toBe($value);
 })->with([
@@ -27,15 +27,15 @@ it("formats an article's basic properties correctly", function (array $state, st
     [['body' => 'foo bar baz'], 'read_time', 0.015],
 ]);
 
-it("formats an article's author correctly", function () {
+it("formats an post's author correctly", function () {
     $author = author()->create([
         'avatar' => 'https://pestphp.com/avatars/luke',
         'name' => 'Luke Downing',
     ]);
-    $article = post()->forAuthor($author)->create();
+    $post = post()->forAuthor($author)->create();
 
-    $action = $this->app->make(ProvideArticleResource::class);
-    $result = $action->handle($article, request());
+    $action = $this->app->make(ProvidePostResource::class);
+    $result = $action->handle($post, request());
 
     expect($result['author'])
         ->id->toBe($author->id)
