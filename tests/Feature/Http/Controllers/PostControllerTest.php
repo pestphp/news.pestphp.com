@@ -17,16 +17,12 @@ it('can display a post for a guest', function () {
         );
 });
 
-it('will not display posts that are not set as published', function () {
-    $post = post()->unpublished(now()->subDay())->create();
+it('will not display posts that are not published', function (array $state) {
+    $post = post()->state($state)->create();
 
     $this->get(route('posts.show', $post))
         ->assertNotFound();
-});
-
-it('will not display posts that have publish_date set to a future date', function () {
-    $post = post()->state(['publish_date' => now()->addDay()])->create();
-
-    $this->get(route('posts.show', $post))
-        ->assertNotFound();
-});
+})->with([
+    [['publish_date' => now()->subDay(), 'published' => false]],
+    [['publish_date' => now()->addDay(), 'published' => true]],
+]);
