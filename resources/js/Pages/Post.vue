@@ -14,12 +14,9 @@
             </span>
         </div>
 
-        <Info v-if="$page.props.user"
-              class="my-12"
-              :href="`/wink/posts/${post.id}`"
-        >
-            {{ preview ? 'You are currently in preview.' : 'You are on the live post.' }}
-            <InertiaLink v-if="preview && post.is_published"
+        <Info v-if="preview" class="my-12" :href="`/wink/posts/${post.id}`">
+            You are currently in preview.
+            <InertiaLink v-if="post.is_published"
                :href="route('posts.show', post.slug)"
                class="font-medium text-blue-700 hover:text-blue-600">
                 This post is published.
