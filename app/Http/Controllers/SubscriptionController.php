@@ -13,6 +13,6 @@ final class SubscriptionController extends Controller
     {
         $createsSubscription->handle($request->only(['email', 'first_name', 'last_name']));
 
-        return redirect(route('home'));
+        return redirect(route('home'))->with(self::FLASH_MESSAGE, 'Thank you for subscribing!');
     }
 }

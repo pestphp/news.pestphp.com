@@ -14,4 +14,6 @@ abstract class Controller extends BaseController
     use AuthorizesRequests;
     use DispatchesJobs;
     use ValidatesRequests;
+
+    public const FLASH_MESSAGE = 'message';
 }
