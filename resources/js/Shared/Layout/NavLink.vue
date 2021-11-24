@@ -2,7 +2,7 @@
     <li>
         <component :is="page ? 'InertiaLink' : 'a'"
                    :href="href"
-                   :class="{'font-bold bg-gradient-to-b from-pink-500 to-teal-200': isActive}"
+                   :class="{'font-bold bg-gradient-to-b from-pest-pink to-pest-green': isActive}"
                    class="text-lg bg-clip-text text-transparent bg-gray-500 hover:bg-gray-800 flex items-center group">
             <slot/>
             <ExternalLinkIcon v-if="page === null" class="ml-2 w-4 h-4 text-gray-500 group-hover:text-gray-800"/>

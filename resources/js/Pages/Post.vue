@@ -25,8 +25,8 @@
         </Info>
 
         <div v-if="post.featured_image" class="relative">
-            <div class="shadow-lg absolute rounded-md w-full h-full inset-0 bg-pink-400 transform -rotate-2"></div>
-            <div class="shadow-lg absolute rounded-md w-full h-full inset-0 bg-teal-400 transform rotate-2"></div>
+            <div class="shadow-lg absolute rounded-md w-full h-full inset-0 bg-pest-pink transform -rotate-2"></div>
+            <div class="shadow-lg absolute rounded-md w-full h-full inset-0 bg-pest-green transform rotate-2"></div>
             <img :src="post.featured_image"
                  :alt="post.featured_image_caption"
                  class="shadow-lg relative mt-8 rounded-md"

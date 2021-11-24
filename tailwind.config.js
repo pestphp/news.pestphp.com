@@ -1,3 +1,5 @@
+const colors = require('tailwindcss/colors')
+
 module.exports = {
     content: [
         './resources/**/*.blade.php',
@@ -5,7 +7,18 @@ module.exports = {
         './resources/**/*.vue',
     ],
     theme: {
-        extend: {},
+        extend: {
+            colors: {
+                'pest-green': {
+                    DEFAULT: colors.teal[400],
+                    ...colors.teal
+                },
+                'pest-pink': {
+                    DEFAULT: colors.pink[400],
+                    ...colors.pink
+                },
+            }
+        },
     },
     plugins: [
         require('@tailwindcss/forms'),
