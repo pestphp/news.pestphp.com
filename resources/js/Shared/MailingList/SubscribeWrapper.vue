@@ -25,8 +25,8 @@ export default {
             subscribe: this.subscribe,
             bind: {
                 email: { value: this.form.email },
-                firstName: { value: this.form.email },
-                lastName: { value: this.form.email },
+                firstName: { value: this.form.first_name },
+                lastName: { value: this.form.last_name },
             },
             on: {
                 email: { input: e => this.form.email = e.target.value },

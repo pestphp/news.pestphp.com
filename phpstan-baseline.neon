@@ -1,0 +1,57 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Access to an undefined property Wink\\\\WinkPost\\:\\:\\$publish_date\\.$#"
+			count: 1
+			path: app/Http/Controllers/PostController.php
+
+		-
+			message: "#^Access to an undefined property Wink\\\\WinkPost\\:\\:\\$published\\.$#"
+			count: 1
+			path: app/Http/Controllers/PostController.php
+
+		-
+			message: "#^Access to an undefined property Wink\\\\WinkAuthor\\:\\:\\$name\\.$#"
+			count: 1
+			path: app/Http/Resources/AuthorResource.php
+
+		-
+			message: "#^Access to an undefined property Wink\\\\WinkPost\\:\\:\\$featured_image\\.$#"
+			count: 1
+			path: app/Http/Resources/PostResource.php
+
+		-
+			message: "#^Access to an undefined property Wink\\\\WinkPost\\:\\:\\$featured_image_caption\\.$#"
+			count: 1
+			path: app/Http/Resources/PostResource.php
+
+		-
+			message: "#^Access to an undefined property Wink\\\\WinkPost\\:\\:\\$publish_date\\.$#"
+			count: 2
+			path: app/Http/Resources/PostResource.php
+
+		-
+			message: "#^Access to an undefined property Wink\\\\WinkPost\\:\\:\\$published\\.$#"
+			count: 1
+			path: app/Http/Resources/PostResource.php
+
+		-
+			message: "#^Access to an undefined property Wink\\\\WinkPost\\:\\:\\$slug\\.$#"
+			count: 1
+			path: app/Http/Resources/PostResource.php
+
+		-
+			message: "#^Access to an undefined property Wink\\\\WinkPost\\:\\:\\$title\\.$#"
+			count: 1
+			path: app/Http/Resources/PostResource.php
+
+		-
+			message: "#^Cannot call method getContent\\(\\) on string\\.$#"
+			count: 1
+			path: app/Http/Resources/PostResource.php
+
+		-
+			message: "#^Else branch is unreachable because ternary operator condition is always true\\.$#"
+			count: 1
+			path: app/Http/Resources/PostResource.php
+

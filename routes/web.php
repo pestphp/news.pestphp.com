@@ -6,6 +6,7 @@ use App\Http\Controllers\SubscriptionController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', HomeController::class)->name('home');
+Route::redirect('/login', '/wink/login')->name('login');
 
 Route::get('/blog', function () {
     return inertia('Blog');

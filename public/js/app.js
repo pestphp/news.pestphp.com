@@ -20517,10 +20517,10 @@ __webpack_require__.r(__webpack_exports__);
           value: this.form.email
         },
         firstName: {
-          value: this.form.email
+          value: this.form.first_name
         },
         lastName: {
-          value: this.form.email
+          value: this.form.last_name
         }
       },
       on: {

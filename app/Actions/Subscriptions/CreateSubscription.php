@@ -5,11 +5,25 @@ declare(strict_types=1);
 namespace App\Actions\Subscriptions;
 
 use App\Contracts\Actions\Subscriptions\CreatesSubscription;
+use Illuminate\Support\Facades\Validator;
+use Spatie\Mailcoach\Domain\Audience\Models\EmailList;
+use Spatie\Mailcoach\Domain\Audience\Models\Subscriber;
+use Spatie\Mailcoach\Domain\Audience\Rules\EmailListSubscriptionRule;
 
 final class CreateSubscription implements CreatesSubscription
 {
-    public function handle(array $data): void
+    public function __construct(private EmailList $emailList)
     {
-        // TODO: Implement handle() method.
+    }
+
+    public function handle(array $data): Subscriber
+    {
+        Validator::validate($data, [
+            'email' => ['required', 'email', new EmailListSubscriptionRule($this->emailList)],
+            'first_name' => ['required', 'string'],
+            'last_name' => ['required', 'string'],
+        ]);
+
+        return $this->emailList->subscribe($data['email'], $data);
     }
 }

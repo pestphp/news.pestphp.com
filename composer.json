@@ -5,13 +5,15 @@
     "keywords": ["framework", "laravel"],
     "license": "MIT",
     "require": {
-        "php": "^7.4",
+        "php": "^8.0",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
         "inertiajs/inertia-laravel": "^0.4.5",
         "laravel/framework": "^8.65",
+        "laravel/horizon": "^5.7",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
+        "spatie/laravel-mailcoach": "^4.0",
         "themsaid/wink": "^1.2",
         "tightenco/ziggy": "^1.4"
     },
@@ -45,7 +47,8 @@
             "@php artisan package:discover --ansi"
         ],
         "post-update-cmd": [
-            "@php artisan vendor:publish --tag=laravel-assets --ansi"
+            "@php artisan vendor:publish --tag=laravel-assets --ansi",
+            "@php artisan vendor:publish --tag mailcoach-assets --force"
         ],
         "post-root-package-install": [
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
@@ -73,9 +76,15 @@
         "preferred-install": "dist",
         "sort-packages": true,
         "platform": {
-            "php": "7.4"
+            "php": "8.0"
         }
     },
     "minimum-stability": "dev",
-    "prefer-stable": true
+    "prefer-stable": true,
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://satis.spatie.be"
+        }
+    ]
 }

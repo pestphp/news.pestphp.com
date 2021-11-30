@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Contracts\Actions\Subscriptions;
 
 use Illuminate\Validation\ValidationException;
+use Spatie\Mailcoach\Domain\Audience\Models\Subscriber;
 
 interface CreatesSubscription
 {
@@ -13,5 +14,5 @@ interface CreatesSubscription
      *
      * @throws ValidationException
      */
-    public function handle(array $data): void;
+    public function handle(array $data): Subscriber;
 }
