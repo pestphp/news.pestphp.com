@@ -1,12 +1,27 @@
+const colors = require('tailwindcss/colors')
+
 module.exports = {
-    purge: [
+    content: [
         './resources/**/*.blade.php',
         './resources/**/*.js',
         './resources/**/*.vue',
     ],
-    content: [],
     theme: {
-        extend: {},
+        extend: {
+            colors: {
+                'pest-green': {
+                    DEFAULT: colors.teal[400],
+                    ...colors.teal
+                },
+                'pest-pink': {
+                    DEFAULT: colors.pink[400],
+                    ...colors.pink
+                },
+            }
+        },
     },
-    plugins: [],
+    plugins: [
+        require('@tailwindcss/forms'),
+        require('@tailwindcss/typography'),
+    ],
 }

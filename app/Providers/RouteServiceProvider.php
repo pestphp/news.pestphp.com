@@ -53,6 +53,8 @@ final class RouteServiceProvider extends ServiceProvider
                 ->name('admin.')
                 ->group(base_path('routes/admin.php'));
         });
+
+        Route::mailcoach('mailcoach');
     }
 
     /**
