@@ -16,6 +16,7 @@
                         <label for="email-address" class="sr-only">Email address</label>
                         <Input v-on="on.email"
                                v-bind="bind.email"
+                               :error="form.errors.email"
                                id="email-address"
                                type="email"
                                required=""
@@ -25,6 +26,7 @@
                         <label for="first-name" class="sr-only">First name</label>
                         <Input v-on="on.firstName"
                                v-bind="bind.firstName"
+                               :error="form.errors.firstName"
                                id="first-name"
                                type="text"
                                required=""
@@ -35,6 +37,7 @@
                         <label for="last-name" class="sr-only">Last name</label>
                         <Input v-on="on.lastName"
                                v-bind="bind.lastName"
+                               :error="form.errors.lastName"
                                id="last-name"
                                type="text"
                                required=""

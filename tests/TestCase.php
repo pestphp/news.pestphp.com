@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Tests;
 
-use Database\Seeders\MailingListSeeder;
+use Database\Seeders\EmailListSeeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
 
@@ -21,7 +21,7 @@ abstract class TestCase extends BaseTestCase
             '--path' => 'vendor/themsaid/wink/src/Migrations',
         ]);
 
-        $this->seed(MailingListSeeder::class);
+        $this->seed(EmailListSeeder::class);
     }
 
     /**

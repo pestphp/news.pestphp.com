@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Middleware;
 
+use App\Http\Controllers\Controller;
 use App\Http\Resources\AuthorResource;
 use Illuminate\Http\Request;
 use Inertia\Middleware;
@@ -38,10 +39,13 @@ final class HandleInertiaRequests extends Middleware
      *
      * @return array<string, mixed>
      */
-    public function share(Request $request)
+    public function share(Request $request): array
     {
         return array_merge(parent::share($request), [
             'user' => fn () => auth()->user() ? AuthorResource::make(auth()->user()) : null,
+            'flash' => [
+                'message' => fn () => $request->session()->get(Controller::FLASH_MESSAGE),
+            ],
         ]);
     }
 }

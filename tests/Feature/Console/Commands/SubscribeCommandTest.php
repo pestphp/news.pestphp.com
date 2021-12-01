@@ -13,14 +13,14 @@ it('can subscribe a user to the Pest Newsletter', function () {
     ];
 
     $this->expectToUseAction(CreatesSubscription::class)
-        ->andReturn(new Subscriber($data));
+        ->andReturn(Subscriber::factory()->make($data));
 
     $this->artisan('pest:subscribe', $data)->assertSuccessful();
 });
 
 it('can optionally pass in the email', function () {
     $this->expectToUseAction(CreatesSubscription::class)
-        ->andReturn(new Subscriber(['email' => 'luke@pestphp.com']));
+        ->andReturn(Subscriber::factory()->make(['email' => 'luke@pestphp.com']));
 
     $this->artisan('pest:subscribe')
         ->expectsQuestion('Email address', 'luke@pestphp.com')

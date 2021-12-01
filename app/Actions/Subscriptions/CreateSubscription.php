@@ -20,8 +20,8 @@ final class CreateSubscription implements CreatesSubscription
     {
         Validator::validate($data, [
             'email' => ['required', 'email', new EmailListSubscriptionRule($this->emailList)],
-            'first_name' => ['required', 'string'],
-            'last_name' => ['required', 'string'],
+            'first_name' => ['required', 'string', 'max:255'],
+            'last_name' => ['required', 'string', 'max:255'],
         ]);
 
         return $this->emailList->subscribe($data['email'], $data);
