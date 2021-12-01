@@ -2,7 +2,9 @@
     <div class="flex flex-col min-h-screen">
         <Header/>
         <div class="flex-grow">
-            <Banner :content="$page.props.flash.message"/>
+            <Banner :content="$page.props.flash.error ?? $page.props.flash.message"
+                    :is-error="$page.props.flash.error"
+            />
             <slot/>
         </div>
         <Footer/>
