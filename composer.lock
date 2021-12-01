@@ -2770,16 +2770,16 @@
         },
         {
             "name": "nikic/php-parser",
-            "version": "v4.13.1",
+            "version": "v4.13.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nikic/PHP-Parser.git",
-                "reference": "63a79e8daa781cac14e5195e63ed8ae231dd10fd"
+                "reference": "210577fe3cf7badcc5814d99455df46564f3c077"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/63a79e8daa781cac14e5195e63ed8ae231dd10fd",
-                "reference": "63a79e8daa781cac14e5195e63ed8ae231dd10fd",
+                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/210577fe3cf7badcc5814d99455df46564f3c077",
+                "reference": "210577fe3cf7badcc5814d99455df46564f3c077",
                 "shasum": ""
             },
             "require": {
@@ -2820,9 +2820,9 @@
             ],
             "support": {
                 "issues": "https://github.com/nikic/PHP-Parser/issues",
-                "source": "https://github.com/nikic/PHP-Parser/tree/v4.13.1"
+                "source": "https://github.com/nikic/PHP-Parser/tree/v4.13.2"
             },
-            "time": "2021-11-03T20:52:16+00:00"
+            "time": "2021-11-30T19:35:32+00:00"
         },
         {
             "name": "opis/closure",
@@ -4031,17 +4031,17 @@
         },
         {
             "name": "spatie/laravel-mailcoach",
-            "version": "4.15.1",
+            "version": "4.15.2",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spatie/laravel-mailcoach.git",
-                "reference": "a4dc2aee68088384ccad4353fddd1d4c2768b66c"
+                "reference": "2584cb559549fdb645470b133c56d98c57d6d676"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://satis.spatie.be/dist/spatie/laravel-mailcoach/spatie-laravel-mailcoach-a4dc2aee68088384ccad4353fddd1d4c2768b66c-zip-314d08.zip",
-                "reference": "a4dc2aee68088384ccad4353fddd1d4c2768b66c",
-                "shasum": "d1e4d31b7ec32ac38cb8df7485b9513079a61530"
+                "url": "https://satis.spatie.be/dist/spatie/laravel-mailcoach/spatie-laravel-mailcoach-2584cb559549fdb645470b133c56d98c57d6d676-zip-229595.zip",
+                "reference": "2584cb559549fdb645470b133c56d98c57d6d676",
+                "shasum": "7af609a95bd0bba8bd0eff1a3f2b41a4e84e655e"
             },
             "require": {
                 "cakephp/chronos": "^2.0",
@@ -4151,10 +4151,10 @@
                 "spatie"
             ],
             "support": {
-                "source": "https://github.com/spatie/laravel-mailcoach/tree/4.15.1",
+                "source": "https://github.com/spatie/laravel-mailcoach/tree/4.15.2",
                 "issues": "https://github.com/spatie/laravel-mailcoach/issues"
             },
-            "time": "2021-11-16T10:11:53+00:00"
+            "time": "2021-12-01T18:54:38+00:00"
         },
         {
             "name": "spatie/laravel-medialibrary",

@@ -12,13 +12,13 @@ it('can delete an existing subscription', function () {
         'email_list_id' => $this->app->make(EmailList::class)->getKey(),
     ]);
 
-    expect(Subscriber::count())->toBe(1);
+    expect(Subscriber::query()->subscribed()->count())->toBe(1);
 
     $action = $this->app->make(DeleteSubscription::class);
     $result = $action->handle('luke@pestphp.com');
 
     expect($result)->toBeTrue();
-    expect(Subscriber::exists())->toBeFalse();
+    expect(Subscriber::query()->subscribed()->count())->toBe(0);
 });
 
 it('returns false if the email is not subscribed', function () {
