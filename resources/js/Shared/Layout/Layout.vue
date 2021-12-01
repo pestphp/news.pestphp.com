@@ -2,6 +2,7 @@
     <div class="flex flex-col min-h-screen">
         <Header/>
         <div class="flex-grow">
+            <Banner :content="$page.props.flash.message"/>
             <slot/>
         </div>
         <Footer/>
@@ -11,9 +12,10 @@
 <script>
 import Footer from "./Footer";
 import Header from "./Header";
+import Banner from "./Banner";
 
 export default {
     name: "Layout",
-    components: {Header, Footer}
+    components: {Banner, Header, Footer}
 }
 </script>

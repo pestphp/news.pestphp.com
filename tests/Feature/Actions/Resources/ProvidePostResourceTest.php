@@ -3,12 +3,6 @@
 declare(strict_types=1);
 
 use App\Actions\Resources\ProvidePostResource;
-use App\Contracts\Actions\Resources\ProvidesPostResource;
-
-it('is the bound default in the container', function () {
-    expect($this->app->make(ProvidesPostResource::class))
-        ->toBeInstanceOf(ProvidePostResource::class);
-});
 
 it("formats an posts's basic properties correctly", function (array $state, string $key, $value) {
     $post = post()->create($state);

@@ -12,6 +12,8 @@ Route::get('/blog', function () {
     return inertia('Blog');
 })->name('blog');
 
-Route::post('/subscribe', [SubscriptionController::class, 'subscribe'])->name('subscribe');
+Route::post('/subscribe', [SubscriptionController::class, 'subscribe'])
+    ->middleware('throttle:subscriptions')
+    ->name('subscribe');
 
 Route::get('/posts/{post:slug}', [PostController::class, 'show'])->name('posts.show');

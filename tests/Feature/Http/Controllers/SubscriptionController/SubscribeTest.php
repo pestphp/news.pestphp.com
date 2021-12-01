@@ -19,5 +19,5 @@ it('includes a flash message', function () {
         'email' => 'luke@foo.bar',
         'first_name' => 'Luke',
         'last_name' => 'Downing',
-    ])->assertSessionHas('message', 'Thank you for subscribing!');
+    ])->assertSessionHas('message', 'Thank you for subscribing! We\'ve sent you a confirmation email.');
 });

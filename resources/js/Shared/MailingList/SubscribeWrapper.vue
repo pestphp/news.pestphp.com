@@ -16,6 +16,7 @@ export default {
         subscribe() {
             this.form.post(route('subscribe'), {
                 preserveScroll: true,
+                onSuccess: data => this.form.reset(),
             })
         },
     },

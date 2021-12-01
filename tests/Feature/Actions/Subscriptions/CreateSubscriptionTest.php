@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use App\Actions\Subscriptions\CreateSubscription;
+use Illuminate\Support\Str;
 use Spatie\Mailcoach\Domain\Audience\Models\EmailList;
 use Spatie\Mailcoach\Domain\Audience\Models\Subscriber;
 
@@ -33,7 +34,9 @@ it('validates the given data', function (array $data, array $expectedErrors) {
     [[], ['email' => 'required', 'first_name' => 'required', 'last_name' => 'required']],
     [['email' => 'foobar'], ['email' => 'email']],
     [['first_name' => 123], ['first_name' => 'string']],
+    [['first_name' => Str::repeat('a', 256)], ['first_name' => '255']],
     [['last_name' => 123], ['last_name' => 'string']],
+    [['last_name' => Str::repeat('a', 256)], ['last_name' => '255']],
 ]);
 
 it('does not allow the same email to be subscribed twice', function () {
