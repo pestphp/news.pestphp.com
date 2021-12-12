@@ -2,6 +2,11 @@ parameters:
 	ignoreErrors:
 		-
 			message: "#^Access to an undefined property Wink\\\\WinkPost\\:\\:\\$publish_date\\.$#"
+			count: 2
+			path: app/Actions/Models/LoadRelatedPosts/LoadRelatedPublishedPostsAsProphet.php
+
+		-
+			message: "#^Access to an undefined property Wink\\\\WinkPost\\:\\:\\$publish_date\\.$#"
 			count: 1
 			path: app/Http/Controllers/PostController.php
 

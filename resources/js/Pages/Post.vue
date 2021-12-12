@@ -21,6 +21,9 @@
                          class="font-medium text-blue-700 hover:text-blue-600">
                 This post is published.
             </InertiaLink>
+            <span v-else>
+                You are viewing the post <span class="font-bold">as it will appear once published</span>.
+            </span>
             <template #href>Edit Post</template>
         </Info>
 

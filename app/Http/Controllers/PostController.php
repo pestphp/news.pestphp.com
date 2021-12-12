@@ -16,7 +16,7 @@ final class PostController extends Controller
 {
     public function __construct(
         private ProvidesPostResource $postResourceProvider,
-        private LoadsRelatedPosts $loadsRelatedPosts
+        private LoadsRelatedPosts $relatedPostLoader
     ) {
     }
 
@@ -26,7 +26,7 @@ final class PostController extends Controller
 
         abort_if($post->publish_date->isFuture(), ResponseCode::HTTP_NOT_FOUND);
 
-        $relatedPosts = $this->loadsRelatedPosts->handle($post)->limit(3)->get();
+        $relatedPosts = $this->relatedPostLoader->handle($post)->limit(3)->get();
 
         return Inertia::render('Post', [
             'post' => $this->postResourceProvider->for($post, $request),

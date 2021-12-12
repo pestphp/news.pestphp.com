@@ -39,7 +39,7 @@ it('can displayed related posts', function () {
         );
 });
 
-it('limits the number of related posts to 4', function () {
+it('limits the number of related posts to 3', function () {
     $this->get(route('posts.show', post()->withRelatedPosts(4)->create()))
         ->assertInertia(fn (Assert $page) => $page
             ->component('Post')

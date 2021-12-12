@@ -34,3 +34,25 @@ it('returns the Post vue component', function () {
             ->where('preview', true)
         );
 });
+
+it('can displayed related posts', function () {
+    $this->expectToUseAction(ProvidesPostResource::class, 'forAll')
+        ->andReturn([['title' => 'My Post Title']]);
+
+    $this->actingAs(author()->make())
+        ->get(route('admin.preview', post()->create()))
+        ->assertOk()
+        ->assertInertia(fn (Assert $page) => $page
+            ->component('Post')
+            ->where('related_posts', [['title' => 'My Post Title']])
+        );
+});
+
+it('limits the number of related posts to 3', function () {
+    $this->actingAs(author()->make())
+        ->get(route('admin.preview', post()->withRelatedPosts(4)->create()))
+        ->assertInertia(fn (Assert $page) => $page
+            ->component('Post')
+            ->has('related_posts', 3) // 4 related posts but only 3 are loaded
+        );
+});
