@@ -10,7 +10,7 @@
                 tutorials, articles and more. Delivered weekly, no spam.
             </p>
         </div>
-        <SimpleSubscribeForm color="text-pest-green-100" class="mt-12 sm:w-full sm:max-w-md lg:mt-0 lg:ml-8 lg:flex-1" />
+        <SimpleSubscribeForm theme="green" class="mt-12 sm:w-full sm:max-w-md lg:mt-0 lg:ml-8 lg:flex-1" />
     </div>
 </template>
 

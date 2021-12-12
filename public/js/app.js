@@ -20636,9 +20636,19 @@ __webpack_require__.r(__webpack_exports__);
     SubscribeWrapper: _SubscribeWrapper__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   props: {
-    color: {
+    theme: {
       type: String,
-      "default": "text-gray-900"
+      "default": "gray",
+      options: ["gray", "green", "pink"]
+    }
+  },
+  computed: {
+    textColor: function textColor() {
+      return {
+        'gray': 'text-gray-900',
+        'green': 'text-pest-green-100',
+        'pink': 'text-pest-pink-100'
+      }[this.theme];
     }
   }
 });
@@ -21028,7 +21038,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
           return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [_hoisted_17, _hoisted_18, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_SimpleSubscribeForm, {
-            color: "text-pest-pink-50",
+            theme: "pink",
             "class": "mt-4 sm:w-full sm:max-w-lg lg:flex-1"
           })])];
         }),
@@ -21653,7 +21663,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_SimpleSubscribeForm = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("SimpleSubscribeForm");
 
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [_hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_SimpleSubscribeForm, {
-    color: "text-pest-green-100",
+    theme: "green",
     "class": "mt-12 sm:w-full sm:max-w-md lg:mt-0 lg:ml-8 lg:flex-1"
   })]);
 }
@@ -21771,7 +21781,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       , ["disabled"])], 40
       /* PROPS, HYDRATE_EVENTS */
       , _hoisted_1), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
-        "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)([$props.color, 'mt-3 text-sm'])
+        "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)([$options.textColor, 'mt-3 text-sm'])
       }, _hoisted_9, 2
       /* CLASS */
       )];

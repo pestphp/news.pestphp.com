@@ -52,7 +52,7 @@
                     Subscribe to our free newsletter to get regular updates when we release new features,
                     tutorials, articles and more. Delivered weekly, no spam.
                 </p>
-                <SimpleSubscribeForm color="text-pest-pink-50" class="mt-4 sm:w-full sm:max-w-lg lg:flex-1"/>
+                <SimpleSubscribeForm theme="pink" class="mt-4 sm:w-full sm:max-w-lg lg:flex-1"/>
             </div>
         </RelatedPosts>
     </Container>

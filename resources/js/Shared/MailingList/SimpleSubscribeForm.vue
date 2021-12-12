@@ -40,7 +40,7 @@
                         class="self-end w-full mt-3 sm:mt-0 sm:ml-3 sm:w-auto sm:flex-shrink-0">Notify me
                 </Button>
             </form>
-            <p :class="[color, 'mt-3 text-sm']">
+            <p :class="[textColor, 'mt-3 text-sm']">
                 We care about the protection of your data. Read our
                 <a href="#" class="text-white font-medium underline">
                     Privacy Policy.
@@ -60,9 +60,19 @@ export default {
     name: "SimpleSubscribeForm",
     components: {Button, Input, SubscribeWrapper},
     props: {
-        color: {
+        theme: {
             type: String,
-            default: "text-gray-900"
+            default: "gray",
+            options: ["gray", "green", "pink"],
+        }
+    },
+    computed: {
+        textColor() {
+            return {
+                'gray': 'text-gray-900',
+                'green': 'text-pest-green-100',
+                'pink': 'text-pest-pink-100',
+            }[this.theme]
         }
     }
 }
