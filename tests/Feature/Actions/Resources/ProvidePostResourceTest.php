@@ -8,7 +8,7 @@ it("formats an posts's basic properties correctly", function (array $state, stri
     $post = post()->create($state);
 
     $action = $this->app->make(ProvidePostResource::class);
-    $result = $action->handle($post, request());
+    $result = $action->for($post, request());
 
     expect($result[$key])->toBe($value);
 })->with([
@@ -33,7 +33,7 @@ it("formats an post's author correctly", function () {
     $post = post()->forAuthor($author)->create();
 
     $action = $this->app->make(ProvidePostResource::class);
-    $result = $action->handle($post, request());
+    $result = $action->for($post, request());
 
     expect($result['author'])
         ->id->toBe($author->id)

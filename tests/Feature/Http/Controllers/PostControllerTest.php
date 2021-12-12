@@ -6,7 +6,7 @@ use App\Contracts\Actions\Resources\ProvidesPostResource;
 use Inertia\Testing\Assert;
 
 it('can display a post for a guest', function () {
-    $this->expectToUseAction(ProvidesPostResource::class)
+    $this->expectToUseAction(ProvidesPostResource::class, 'for')
         ->andReturn(['title' => 'My Post Title']);
 
     $this->get(route('posts.show', post()->create()))
@@ -26,3 +26,7 @@ it('will not display posts that are not published', function (array $state) {
     [['publish_date' => now()->subDay(), 'published' => false]],
     [['publish_date' => now()->addDay(), 'published' => true]],
 ]);
+
+it('uses the LoadRelatedPublishedPosts action for related posts', function () {
+
+});

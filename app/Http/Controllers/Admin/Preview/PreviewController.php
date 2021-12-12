@@ -16,7 +16,7 @@ final class PreviewController extends Controller
     public function __invoke(Request $request, WinkPost $post, ProvidesPostResource $postResourceProvider): Response
     {
         return Inertia::render('Post', [
-            'post' => $postResourceProvider->handle($post, $request),
+            'post' => $postResourceProvider->for($post, $request),
             'preview' => true,
         ]);
     }

@@ -20,7 +20,7 @@ it('cannot be accessed by a guest', function () {
 });
 
 it('returns the Post vue component', function () {
-    $this->expectToUseAction(ProvidesPostResource::class)
+    $this->expectToUseAction(ProvidesPostResource::class, 'for')
         ->andReturn(['title' => 'Hello World']);
 
     $author = author()->create();

@@ -11,7 +11,7 @@ use Wink\WinkPost;
 
 final class ProvidePostResource implements ProvidesPostResource
 {
-    public function handle(WinkPost $post, Request $request): array
+    public function for(WinkPost $post, Request $request): array
     {
         return PostResource::make($post)->forInertia($request);
     }

@@ -20,7 +20,7 @@ final class PostController extends Controller
         abort_if($post->publish_date->isFuture(), ResponseCode::HTTP_NOT_FOUND);
 
         return Inertia::render('Post', [
-            'post' => $postResourceProvider->handle($post, $request),
+            'post' => $postResourceProvider->for($post, $request),
         ]);
     }
 }

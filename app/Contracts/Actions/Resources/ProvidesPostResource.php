@@ -12,5 +12,5 @@ interface ProvidesPostResource
     /**
      * @return array<string, mixed>
      */
-    public function handle(WinkPost $post, Request $request): array;
+    public function for(WinkPost $post, Request $request): array;
 }
