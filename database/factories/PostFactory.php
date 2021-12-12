@@ -10,6 +10,9 @@ use Wink\WinkAuthor;
 use Wink\WinkPost;
 use Wink\WinkTag;
 
+/**
+ * @extends Factory<WinkPost>
+ */
 class PostFactory extends Factory
 {
     protected $model = WinkPost::class;
@@ -55,5 +58,14 @@ class PostFactory extends Factory
         }
 
         return $this->hasAttached($tags, [], 'tags');
+    }
+
+    public function withRelatedPosts(int $count): self
+    {
+        $tag = TagFactory::new()->create();
+
+        return $this->hasTags($tag)->afterCreating(function () use ($count, $tag) {
+            static::count($count)->hasTags($tag)->create();
+        });
     }
 }

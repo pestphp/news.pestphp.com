@@ -19,6 +19,7 @@ final class LoadRelatedPosts implements LoadsRelatedPosts
     public function handle(WinkPost $post): Builder
     {
         return WinkPost::query()
+            ->with('author')
             ->whereKeyNot($post->getKey())
             ->whereHas('tags', fn (Builder $query) => $query->whereIn('id', $post->tags()->pluck('id')))
             ->orderByDesc('publish_date');

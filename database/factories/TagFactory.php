@@ -5,6 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Wink\WinkTag;
 
+/**
+ * @extends Factory<WinkTag>
+ */
 class TagFactory extends Factory
 {
     protected $model = WinkTag::class;
