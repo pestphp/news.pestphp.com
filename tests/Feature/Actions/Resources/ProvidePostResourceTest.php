@@ -46,6 +46,7 @@ dataset('post-attributes', [
     [['slug' => 'foo-bar'], 'slug', 'foo-bar'],
     [['featured_image' => '/storage/some-fake-file.png'], 'featured_image', '/storage/some-fake-file.png'],
     [['featured_image_caption' => 'Pest in Practice'], 'featured_image_caption', 'Pest in Practice'],
+    [['excerpt' => 'Foo bar'], 'excerpt', 'Foo bar'],
     [['body' => 'Foo bar baz', 'markdown' => false], 'content', 'Foo bar baz'],
     [['body' => '# Foo bar baz', 'markdown' => true], 'content', "<h1>Foo bar baz</h1>\n"],
     [['publish_date' => now()->subDay()->startOfDay()], 'publish_date', ['diff' => '1 day ago', 'iso' => now()->subDay()->startOfDay()->toISOString()]],

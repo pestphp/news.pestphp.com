@@ -16,6 +16,11 @@ parameters:
 			path: app/Http/Resources/AuthorResource.php
 
 		-
+			message: "#^Access to an undefined property Wink\\\\WinkPost\\:\\:\\$excerpt\\.$#"
+			count: 1
+			path: app/Http/Resources/PostResource.php
+
+		-
 			message: "#^Access to an undefined property Wink\\\\WinkPost\\:\\:\\$featured_image\\.$#"
 			count: 1
 			path: app/Http/Resources/PostResource.php
@@ -54,4 +59,14 @@ parameters:
 			message: "#^Else branch is unreachable because ternary operator condition is always true\\.$#"
 			count: 1
 			path: app/Http/Resources/PostResource.php
+
+		-
+			message: "#^Access to an undefined property Wink\\\\WinkPost\\:\\:\\$body\\.$#"
+			count: 1
+			path: app/Observers/WinkPostObserver.php
+
+		-
+			message: "#^Access to an undefined property Wink\\\\WinkPost\\:\\:\\$excerpt\\.$#"
+			count: 1
+			path: app/Observers/WinkPostObserver.php
 

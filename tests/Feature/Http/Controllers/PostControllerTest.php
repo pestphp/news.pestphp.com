@@ -39,10 +39,10 @@ it('can displayed related posts', function () {
         );
 });
 
-it('limits the number of related posts to 5', function () {
-    $this->get(route('posts.show', post()->withRelatedPosts(6)->create()))
+it('limits the number of related posts to 4', function () {
+    $this->get(route('posts.show', post()->withRelatedPosts(4)->create()))
         ->assertInertia(fn (Assert $page) => $page
             ->component('Post')
-            ->has('related_posts', 5) // 6 related posts but only 5 are loaded
+            ->has('related_posts', 3) // 4 related posts but only 3 are loaded
         );
 });
