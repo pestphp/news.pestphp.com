@@ -43,7 +43,18 @@
         <RelatedPosts v-if="related_posts.length > 0"
                       :posts="related_posts"
                       class="mt-6"
-        />
+        >
+            <div>
+                <h2 class="mt-12 text-3xl font-extrabold tracking-tight text-white">
+                    Need even more Pest?
+                </h2>
+                <p class="mt-4 max-w-3xl text-lg text-pest-pink-100">
+                    Subscribe to our free newsletter to get regular updates when we release new features,
+                    tutorials, articles and more. Delivered weekly, no spam.
+                </p>
+                <SimpleSubscribeForm color="text-pest-pink-50" class="mt-4 sm:w-full sm:max-w-lg lg:flex-1"/>
+            </div>
+        </RelatedPosts>
     </Container>
 </template>
 
@@ -55,10 +66,11 @@ import AuthorCentered from "../Shared/Author/Centered";
 import Info from "../Shared/Layout/Alert/Info";
 import {InertiaLink} from "@inertiajs/inertia-vue3";
 import RelatedPosts from "../Shared/Post/RelatedPosts";
+import SimpleSubscribeForm from "../Shared/MailingList/SimpleSubscribeForm";
 
 export default {
     name: "Post",
-    components: {RelatedPosts, Info, AuthorCentered, Heading, Container, Head, InertiaLink},
+    components: {SimpleSubscribeForm, RelatedPosts, Info, AuthorCentered, Heading, Container, Head, InertiaLink},
     props: {
         post: {
             type: Object,
