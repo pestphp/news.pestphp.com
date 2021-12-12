@@ -17,10 +17,13 @@
         <Info v-if="preview" class="my-12" :href="`/wink/posts/${post.id}`">
             You are currently in preview.
             <InertiaLink v-if="post.is_published"
-               :href="route('posts.show', post.slug)"
-               class="font-medium text-blue-700 hover:text-blue-600">
+                         :href="route('posts.show', post.slug)"
+                         class="font-medium text-blue-700 hover:text-blue-600">
                 This post is published.
             </InertiaLink>
+            <span v-else>
+                You are viewing the post <span class="font-bold">as it will appear once published</span>.
+            </span>
             <template #href>Edit Post</template>
         </Info>
 
@@ -35,6 +38,13 @@
 
         <div class="mt-12 prose" v-html="post.content"></div>
     </Container>
+
+    <Container wide class="mt-16">
+        <RelatedPosts v-if="related_posts.length > 0"
+                      :posts="related_posts"
+                      class="mt-6"
+        />
+    </Container>
 </template>
 
 <script>
@@ -44,13 +54,19 @@ import Heading from "../Shared/Layout/Heading";
 import AuthorCentered from "../Shared/Author/Centered";
 import Info from "../Shared/Layout/Alert/Info";
 import {InertiaLink} from "@inertiajs/inertia-vue3";
+import RelatedPosts from "../Shared/Post/RelatedPosts";
 
 export default {
     name: "Post",
-    components: {Info, AuthorCentered, Heading, Container, Head, InertiaLink},
+    components: {RelatedPosts, Info, AuthorCentered, Heading, Container, Head, InertiaLink},
     props: {
         post: {
             type: Object,
+            required: true,
+        },
+        related_posts: {
+            type: Array,
+            required: true,
         },
         preview: {
             type: Boolean,

@@ -33,6 +33,7 @@ final class PostResource extends JsonResource
             'featured_image_caption' => $this->resource->featured_image_caption,
             'title' => $this->resource->title,
             'content' => $content,
+            'excerpt' => $this->resource->excerpt,
             'is_published' => $this->resource->published && $this->resource->publish_date->isPast(),
             'publish_date' => DateResource::make($this->resource->publish_date),
             'read_time' => Str::of($content)->stripTags()->wordCount() / 200,

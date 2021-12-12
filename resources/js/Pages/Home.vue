@@ -1,16 +1,17 @@
 <template>
     <Head></Head>
-    <div class="max-w-7xl mx-auto mt-12">
+    <Container wide class="mt-12">
         <HomePageMailingListSignup/>
-    </div>
+    </Container>
 </template>
 
 <script>
 import {Link} from '@inertiajs/inertia-vue3'
 import Head from "../Shared/Meta/Head"
 import HomePageMailingListSignup from "../Shared/MailingList/HomePageMailingListSignup";
+import Container from "../Shared/Layout/Container";
 
 export default {
-    components: {HomePageMailingListSignup, Link, Head},
+    components: {Container, HomePageMailingListSignup, Link, Head},
 }
 </script>

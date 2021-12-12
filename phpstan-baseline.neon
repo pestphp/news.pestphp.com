@@ -2,6 +2,11 @@ parameters:
 	ignoreErrors:
 		-
 			message: "#^Access to an undefined property Wink\\\\WinkPost\\:\\:\\$publish_date\\.$#"
+			count: 2
+			path: app/Actions/Models/LoadRelatedPosts/LoadRelatedPublishedPostsAsProphet.php
+
+		-
+			message: "#^Access to an undefined property Wink\\\\WinkPost\\:\\:\\$publish_date\\.$#"
 			count: 1
 			path: app/Http/Controllers/PostController.php
 
@@ -14,6 +19,11 @@ parameters:
 			message: "#^Access to an undefined property Wink\\\\WinkAuthor\\:\\:\\$name\\.$#"
 			count: 1
 			path: app/Http/Resources/AuthorResource.php
+
+		-
+			message: "#^Access to an undefined property Wink\\\\WinkPost\\:\\:\\$excerpt\\.$#"
+			count: 1
+			path: app/Http/Resources/PostResource.php
 
 		-
 			message: "#^Access to an undefined property Wink\\\\WinkPost\\:\\:\\$featured_image\\.$#"
@@ -54,4 +64,14 @@ parameters:
 			message: "#^Else branch is unreachable because ternary operator condition is always true\\.$#"
 			count: 1
 			path: app/Http/Resources/PostResource.php
+
+		-
+			message: "#^Access to an undefined property Wink\\\\WinkPost\\:\\:\\$body\\.$#"
+			count: 1
+			path: app/Observers/WinkPostObserver.php
+
+		-
+			message: "#^Access to an undefined property Wink\\\\WinkPost\\:\\:\\$excerpt\\.$#"
+			count: 1
+			path: app/Observers/WinkPostObserver.php
 

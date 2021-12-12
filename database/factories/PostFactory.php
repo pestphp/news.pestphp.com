@@ -3,11 +3,16 @@
 namespace Database\Factories;
 
 use Carbon\CarbonInterface;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 use Wink\WinkAuthor;
 use Wink\WinkPost;
+use Wink\WinkTag;
 
+/**
+ * @extends Factory<WinkPost>
+ */
 class PostFactory extends Factory
 {
     protected $model = WinkPost::class;
@@ -41,5 +46,26 @@ class PostFactory extends Factory
             'published' => false,
             'publish_date' => $publishDate ?? now()->addDay(),
         ]);
+    }
+
+    /**
+     * @param TagFactory|Collection<WinkTag>|WinkTag|int $tags
+     */
+    public function hasTags(TagFactory|Collection|WinkTag|int $tags): self
+    {
+        if (is_int($tags)) {
+            $tags = TagFactory::new()->count($tags);
+        }
+
+        return $this->hasAttached($tags, [], 'tags');
+    }
+
+    public function withRelatedPosts(int $count): self
+    {
+        $tag = TagFactory::new()->create();
+
+        return $this->hasTags($tag)->afterCreating(function () use ($count, $tag) {
+            static::count($count)->hasTags($tag)->create();
+        });
     }
 }

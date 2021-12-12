@@ -1,5 +1,5 @@
 <template>
-    <div class="mt-6 flex flex-col items-center text-center space-y-2">
+    <div :class="[color, 'mt-6 flex flex-col items-center text-center space-y-2']">
         <a href="#" class="inline-block relative">
             <span class="sr-only">{{ author.name }}</span>
             <img class="h-14 w-14 rounded-md"
@@ -7,7 +7,7 @@
                  alt="Avatar">
         </a>
         <div>
-            <p class="text-sm font-medium text-gray-900">
+            <p class="text-sm font-medium">
                 <a href="#">
                     By {{ author.name }}
                 </a>
@@ -25,6 +25,10 @@ export default {
         author: {
             type: Object,
             required: true,
+        },
+        color: {
+            type: String,
+            default: "text-gray-900",
         },
     },
 }

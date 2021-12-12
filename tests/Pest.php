@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use Database\Factories\AuthorFactory;
 use Database\Factories\PostFactory;
+use Database\Factories\TagFactory;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 use Illuminate\Testing\Assert as PHPUnit;
@@ -20,6 +21,11 @@ function author(): AuthorFactory
 function post(): PostFactory
 {
     return PostFactory::new();
+}
+
+function tag(): TagFactory
+{
+    return TagFactory::new();
 }
 
 expect()->extend('toHaveErrors', function (array $errors) {
