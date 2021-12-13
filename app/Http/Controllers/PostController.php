@@ -20,6 +20,18 @@ final class PostController extends Controller
     ) {
     }
 
+    public function index(Request $request): Response
+    {
+        $posts = WinkPost::query()
+            ->with('author')
+            ->published()
+            ->live()
+            ->paginate(10)
+            ->through(fn (WinkPost $post) => $this->postResourceProvider->for($post, $request));
+
+        return Inertia::render('Blog', ['posts' => $posts]);
+    }
+
     public function show(Request $request, WinkPost $post): Response
     {
         abort_unless($post->published, ResponseCode::HTTP_NOT_FOUND);

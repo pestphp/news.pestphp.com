@@ -46,3 +46,17 @@ it('limits the number of related posts to 3', function () {
             ->has('related_posts', 3) // 4 related posts but only 3 are loaded
         );
 });
+
+it('can load an index of paginated posts', function () {
+    $this->expectToUseAction(ProvidesPostResource::class, 'for')
+        ->andReturn(['title' => 'My Post Title']);
+
+    // There should be 10 posts per page
+    post()->count(11)->create();
+
+    $this->get(route('posts.index'))
+        ->assertInertia(fn (Assert $page) => $page
+            ->component('Blog')
+            ->has('posts.data', 10, fn (Assert $data) => $data->where('title', 'My Post Title'))
+        );
+});

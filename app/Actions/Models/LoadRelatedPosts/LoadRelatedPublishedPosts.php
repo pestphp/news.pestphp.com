@@ -18,6 +18,7 @@ final class LoadRelatedPublishedPosts implements LoadsRelatedPosts
     {
         return $this->decoratedAction
             ->handle($post)
-            ->published();
+            ->published()
+            ->live();
     }
 }
