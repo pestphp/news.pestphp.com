@@ -968,11 +968,11 @@ select {
 .mt-6 {
   margin-top: 1.5rem;
 }
-.mt-8 {
-  margin-top: 2rem;
-}
 .mt-1 {
   margin-top: 0.25rem;
+}
+.mt-8 {
+  margin-top: 2rem;
 }
 .mt-16 {
   margin-top: 4rem;
@@ -1244,10 +1244,6 @@ select {
 .text-center {
   text-align: center;
 }
-.text-sm {
-  font-size: 0.875rem;
-  line-height: 1.25rem;
-}
 .text-xl {
   font-size: 1.25rem;
   line-height: 1.75rem;
@@ -1255,6 +1251,10 @@ select {
 .text-base {
   font-size: 1rem;
   line-height: 1.5rem;
+}
+.text-sm {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
 }
 .text-3xl {
   font-size: 1.875rem;
@@ -1264,11 +1264,11 @@ select {
   font-size: 1.125rem;
   line-height: 1.75rem;
 }
-.font-medium {
-  font-weight: 500;
-}
 .font-semibold {
   font-weight: 600;
+}
+.font-medium {
+  font-weight: 500;
 }
 .font-bold {
   font-weight: 700;
@@ -1281,10 +1281,6 @@ select {
 }
 .tracking-tight {
   letter-spacing: -0.025em;
-}
-.text-pest-pink-600 {
-  --tw-text-opacity: 1;
-  color: rgb(219 39 119 / var(--tw-text-opacity));
 }
 .text-gray-900 {
   --tw-text-opacity: 1;
@@ -1412,10 +1408,6 @@ select {
 .hover\:text-blue-600:hover {
   --tw-text-opacity: 1;
   color: rgb(37 99 235 / var(--tw-text-opacity));
-}
-
-.hover\:underline:hover {
-  text-decoration: underline;
 }
 
 .focus\:outline-none:focus {

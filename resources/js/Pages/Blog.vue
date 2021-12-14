@@ -14,11 +14,6 @@
                 </InertiaLink>
                 <div class="flex-1 bg-white p-6 flex flex-col justify-between">
                     <div class="flex-1">
-                        <p class="text-sm font-medium text-pest-pink-600">
-                            <a href="#" class="hover:underline">
-                                Article
-                            </a>
-                        </p>
                         <InertiaLink :href="route('posts.show', post.slug)" class="block mt-2">
                             <p class="text-xl font-semibold text-gray-900">
                                 {{ post.title }}
@@ -29,7 +24,17 @@
                         </InertiaLink>
                     </div>
                     <div class="mt-6 flex items-center">
-                        <AuthorLeftAligned :author="post.author"/>
+                        <AuthorLeftAligned :author="post.author">
+                            <div class="mt-1 flex space-x-1 text-sm text-gray-500">
+                                <time :datetime="post.publish_date.iso">
+                                    {{ post.publish_date.diff }}
+                                </time>
+                                <span aria-hidden="true">&middot;</span>
+                                <span>
+                                    {{ Math.ceil(post.read_time) }} minute read
+                                </span>
+                            </div>
+                        </AuthorLeftAligned>
                     </div>
                 </div>
             </li>

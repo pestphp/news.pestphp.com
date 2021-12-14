@@ -60,3 +60,17 @@ it('can load an index of paginated posts', function () {
             ->has('posts.data', 12, fn (Assert $data) => $data->where('title', 'My Post Title'))
         );
 });
+
+it('orders paginated posts by their publish date descending', function () {
+    $pastPost = post()->create(['publish_date' => now()->subDay()]);
+    $currentPost = post()->create(['publish_date' => now()->subMinute()]);
+
+    $this->get(route('posts.index'))
+        ->assertInertia(fn (Assert $page) => $page
+            ->component('Blog')
+            ->has('posts.data', fn (Assert $data) => $data
+                ->where('0.id', $currentPost->id)
+                ->where('1.id', $pastPost->id)
+            )
+        );
+});
