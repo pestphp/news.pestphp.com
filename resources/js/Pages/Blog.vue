@@ -59,7 +59,6 @@ export default {
     components: {Info, Button, AuthorLeftAligned, Container, Head, InertiaLink},
     mounted() {
         const observer = new IntersectionObserver(entries => entries.forEach(entry => entry.isIntersecting && this.loadMorePosts(), {
-            threshold: 1.0,
             rootMargin: "-150px 0px 0px 0px"
         }));
 

@@ -20135,7 +20135,6 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       return entries.forEach(function (entry) {
         return entry.isIntersecting && _this.loadMorePosts();
       }, {
-        threshold: 1.0,
         rootMargin: "-150px 0px 0px 0px"
       });
     });
