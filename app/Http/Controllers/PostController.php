@@ -6,7 +6,6 @@ namespace App\Http\Controllers;
 
 use App\Actions\Models\LoadPosts\LoadPublishedPosts;
 use App\Actions\Models\LoadPosts\LoadRelatedPosts;
-use App\Contracts\Actions\Models\LoadsPosts;
 use App\Contracts\Actions\Resources\ProvidesPostResource;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
@@ -19,15 +18,14 @@ final class PostController extends Controller
 {
     public function __construct(
         private ProvidesPostResource $postResourceProvider
-    )
-    {
+    ) {
     }
 
     public function index(Request $request): Response
     {
         $posts = $this->publishedPosts()
             ->paginate(12)
-            ->through(fn(WinkPost $post) => $this->postResourceProvider->for($post, $request));
+            ->through(fn (WinkPost $post) => $this->postResourceProvider->for($post, $request));
 
         return Inertia::render('Blog', ['posts' => $posts]);
     }
@@ -50,6 +48,7 @@ final class PostController extends Controller
 
     /**
      * @param Builder<WinkPost>|null $winkPostBuilder
+     *
      * @return Builder<WinkPost>
      */
     private function publishedPosts(Builder $winkPostBuilder = null): Builder
