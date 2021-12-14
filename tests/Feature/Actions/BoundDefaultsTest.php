@@ -2,11 +2,9 @@
 
 declare(strict_types=1);
 
-use App\Actions\Models\LoadRelatedPosts\LoadRelatedPosts;
 use App\Actions\Resources\ProvidePostResource;
 use App\Actions\Subscriptions\CreateSubscription;
 use App\Actions\Subscriptions\DeleteSubscription;
-use App\Contracts\Actions\Models\LoadsRelatedPosts;
 use App\Contracts\Actions\Resources\ProvidesPostResource;
 use App\Contracts\Actions\Subscriptions\CreatesSubscription;
 use App\Contracts\Actions\Subscriptions\DeletesSubscription;
@@ -17,5 +15,4 @@ it('is the bound default in the container', function (string $contract, string $
     [ProvidesPostResource::class, ProvidePostResource::class],
     [CreatesSubscription::class, CreateSubscription::class],
     [DeletesSubscription::class, DeleteSubscription::class],
-    [LoadsRelatedPosts::class, LoadRelatedPosts::class],
 ]);

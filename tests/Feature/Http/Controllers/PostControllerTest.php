@@ -51,12 +51,12 @@ it('can load an index of paginated posts', function () {
     $this->expectToUseAction(ProvidesPostResource::class, 'for')
         ->andReturn(['title' => 'My Post Title']);
 
-    // There should be 10 posts per page
-    post()->count(11)->create();
+    // There should be 12 posts per page
+    post()->count(13)->create();
 
     $this->get(route('posts.index'))
         ->assertInertia(fn (Assert $page) => $page
             ->component('Blog')
-            ->has('posts.data', 10, fn (Assert $data) => $data->where('title', 'My Post Title'))
+            ->has('posts.data', 12, fn (Assert $data) => $data->where('title', 'My Post Title'))
         );
 });

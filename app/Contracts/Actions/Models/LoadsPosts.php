@@ -7,10 +7,10 @@ namespace App\Contracts\Actions\Models;
 use Illuminate\Database\Eloquent\Builder;
 use Wink\WinkPost;
 
-interface LoadsRelatedPosts
+interface LoadsPosts
 {
     /**
      * @return Builder<WinkPost>
      */
-    public function handle(WinkPost $post): Builder;
+    public function handle(): Builder;
 }

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use App\Actions\Models\LoadRelatedPosts\LoadRelatedPosts;
+use App\Actions\Models\LoadPosts\LoadRelatedPosts;
 
 it('loads a builder limited to the related posts of a post', function () {
     $tags = tag()->count(2)->create();
@@ -15,8 +15,8 @@ it('loads a builder limited to the related posts of a post', function () {
     // And some unrelated posts
     post()->count(3)->hasTags(4)->create();
 
-    $action = $this->app->make(LoadRelatedPosts::class);
-    $posts = $action->handle($post)->get();
+    $action = new LoadRelatedPosts($post);
+    $posts = $action->handle()->get();
 
     expect($posts)->toHaveCount(2);
 });
