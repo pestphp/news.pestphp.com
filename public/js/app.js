@@ -20099,6 +20099,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Shared_Author_LeftAligned__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Shared/Author/LeftAligned */ "./resources/js/Shared/Author/LeftAligned.vue");
 /* harmony import */ var _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @inertiajs/inertia-vue3 */ "./node_modules/@inertiajs/inertia-vue3/dist/index.js");
 /* harmony import */ var _Shared_Form_Button__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../Shared/Form/Button */ "./resources/js/Shared/Form/Button.vue");
+/* harmony import */ var _Shared_Layout_Alert_Info__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../Shared/Layout/Alert/Info */ "./resources/js/Shared/Layout/Alert/Info.vue");
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -20116,14 +20117,29 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
 
 
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "Blog",
   components: {
+    Info: _Shared_Layout_Alert_Info__WEBPACK_IMPORTED_MODULE_5__["default"],
     Button: _Shared_Form_Button__WEBPACK_IMPORTED_MODULE_4__["default"],
     AuthorLeftAligned: _Shared_Author_LeftAligned__WEBPACK_IMPORTED_MODULE_2__["default"],
     Container: _Shared_Layout_Container__WEBPACK_IMPORTED_MODULE_1__["default"],
     Head: _Shared_Meta_Head__WEBPACK_IMPORTED_MODULE_0__["default"],
     InertiaLink: _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_3__.InertiaLink
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    var observer = new IntersectionObserver(function (entries) {
+      return entries.forEach(function (entry) {
+        return entry.isIntersecting && _this.loadMorePosts();
+      }, {
+        threshold: 1.0,
+        rootMargin: "-150px 0px 0px 0px"
+      });
+    });
+    observer.observe(this.$refs.loadMoreIntersect);
   },
   props: {
     posts: {
@@ -20136,12 +20152,22 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       allPosts: this.posts.data
     };
   },
-  watch: {
-    posts: {
-      handler: function handler(newPosts) {
-        this.allPosts = [].concat(_toConsumableArray(this.allPosts), _toConsumableArray(newPosts.data));
-      },
-      deep: true
+  methods: {
+    loadMorePosts: function loadMorePosts() {
+      var _this2 = this;
+
+      if (this.posts.next_page_url === null) {
+        return;
+      }
+
+      this.$inertia.get(this.posts.next_page_url, {}, {
+        preserveState: true,
+        preserveScroll: true,
+        only: ['posts'],
+        onSuccess: function onSuccess() {
+          return _this2.allPosts = [].concat(_toConsumableArray(_this2.allPosts), _toConsumableArray(_this2.posts.data));
+        }
+      });
     }
   }
 });
@@ -20885,11 +20911,10 @@ var _hoisted_7 = {
   "class": "mt-6 flex items-center"
 };
 var _hoisted_8 = {
-  key: 0,
-  "class": "mt-12 flex justify-center"
+  ref: "loadMoreIntersect"
 };
 
-var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Load More");
+var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" You're all up to date! 🥳 ");
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_Head = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Head");
@@ -20898,7 +20923,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   var _component_AuthorLeftAligned = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("AuthorLeftAligned");
 
-  var _component_Button = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Button");
+  var _component_Info = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Info");
 
   var _component_Container = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Container");
 
@@ -20954,30 +20979,19 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         , ["author"])])])]);
       }), 128
       /* KEYED_FRAGMENT */
-      ))]), $props.posts.next_page_url ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_InertiaLink, {
-        href: $props.posts.next_page_url,
-        only: ['posts'],
-        "preserve-state": "",
-        "preserve-scroll": ""
+      ))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_8, null, 512
+      /* NEED_PATCH */
+      ), $props.posts.next_page_url === null ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_Info, {
+        key: 0,
+        "class": "mt-12"
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Button, {
-            is: "span"
-          }, {
-            "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-              return [_hoisted_9];
-            }),
-            _: 1
-            /* STABLE */
-
-          })];
+          return [_hoisted_9];
         }),
         _: 1
         /* STABLE */
 
-      }, 8
-      /* PROPS */
-      , ["href"])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)];
+      })) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)];
     }),
     _: 1
     /* STABLE */

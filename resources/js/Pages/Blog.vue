@@ -34,15 +34,10 @@
                 </div>
             </li>
         </ul>
-        <div v-if="posts.next_page_url" class="mt-12 flex justify-center">
-            <InertiaLink :href="posts.next_page_url"
-                         :only="['posts']"
-                         preserve-state
-                         preserve-scroll
-            >
-                <Button is="span">Load More</Button>
-            </InertiaLink>
-        </div>
+        <span ref="loadMoreIntersect"/>
+        <Info v-if="posts.next_page_url === null" class="mt-12">
+            You're all up to date! 🥳
+        </Info>
     </Container>
 </template>
 
@@ -52,10 +47,19 @@ import Container from "../Shared/Layout/Container";
 import AuthorLeftAligned from "../Shared/Author/LeftAligned";
 import {InertiaLink} from "@inertiajs/inertia-vue3";
 import Button from "../Shared/Form/Button";
+import Info from "../Shared/Layout/Alert/Info";
 
 export default {
     name: "Blog",
-    components: {Button, AuthorLeftAligned, Container, Head, InertiaLink},
+    components: {Info, Button, AuthorLeftAligned, Container, Head, InertiaLink},
+    mounted() {
+        const observer = new IntersectionObserver(entries => entries.forEach(entry => entry.isIntersecting && this.loadMorePosts(), {
+            threshold: 1.0,
+            rootMargin: "-150px 0px 0px 0px"
+        }));
+
+        observer.observe(this.$refs.loadMoreIntersect)
+    },
     props: {
         posts: {
             type: Object,
@@ -67,12 +71,18 @@ export default {
             allPosts: this.posts.data
         }
     },
-    watch: {
-        posts: {
-            handler(newPosts) {
-                this.allPosts = [...this.allPosts, ...newPosts.data]
-            },
-            deep: true
+    methods: {
+        loadMorePosts() {
+            if (this.posts.next_page_url === null) {
+                return
+            }
+
+            this.$inertia.get(this.posts.next_page_url, {}, {
+                preserveState: true,
+                preserveScroll: true,
+                only: ['posts'],
+                onSuccess: () => this.allPosts = [...this.allPosts, ...this.posts.data]
+            })
         }
     }
 }
