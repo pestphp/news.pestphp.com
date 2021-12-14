@@ -3,7 +3,7 @@ parameters:
 		-
 			message: "#^Access to an undefined property Wink\\\\WinkPost\\:\\:\\$publish_date\\.$#"
 			count: 2
-			path: app/Actions/Models/LoadRelatedPosts/LoadRelatedPublishedPostsAsProphet.php
+			path: app/Actions/Models/LoadPosts/LoadRelatedPublishedPostsAsProphet.php
 
 		-
 			message: "#^Access to an undefined property Wink\\\\WinkPost\\:\\:\\$publish_date\\.$#"

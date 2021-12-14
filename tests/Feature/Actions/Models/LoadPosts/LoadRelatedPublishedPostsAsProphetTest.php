@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use App\Actions\Models\LoadRelatedPosts\LoadRelatedPublishedPostsAsProphet;
+use App\Actions\Models\LoadPosts\LoadRelatedPublishedPostsAsProphet;
 
 it('loads a builder limited to the related posts of a post that will be published by the time the post is published', function () {
     $tag = tag()->create();
@@ -13,8 +13,8 @@ it('loads a builder limited to the related posts of a post that will be publishe
     post()->unpublished(now()->addWeek())->hasTags($tag)->create();
     post()->unpublished(now()->addMonths(2))->hasTags($tag)->create();
 
-    $action = $this->app->make(LoadRelatedPublishedPostsAsProphet::class);
-    $posts = $action->handle($post)->get();
+    $action = new LoadRelatedPublishedPostsAsProphet($post);
+    $posts = $action->handle()->get();
 
     // Only two related posts are actually available, the one in the past and the one in a week.
     // The other is too far into the future.
@@ -30,8 +30,8 @@ it('falls back to LoadRelatedPublishedPosts if the publish_date is past', functi
     // A post that isn't published yet so still shouldn't appear in the results
     post()->hasTags($tag)->unpublished()->create();
 
-    $action = $this->app->make(LoadRelatedPublishedPostsAsProphet::class);
-    $posts = $action->handle($post)->get();
+    $action = new LoadRelatedPublishedPostsAsProphet($post);
+    $posts = $action->handle()->get();
 
     expect($posts)->toHaveCount(2);
 });

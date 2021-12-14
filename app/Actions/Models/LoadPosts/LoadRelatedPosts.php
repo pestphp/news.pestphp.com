@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Actions\Models\LoadRelatedPosts;
+namespace App\Actions\Models\LoadPosts;
 
-use App\Contracts\Actions\Models\LoadsRelatedPosts;
+use App\Contracts\Actions\Models\LoadsPosts;
 use Illuminate\Database\Eloquent\Builder;
 use Wink\WinkPost;
 
@@ -14,14 +14,18 @@ use Wink\WinkPost;
  * should be published or unpublished. You should instead use one of
  * the available decorator LoadsRelatedPosts actions to decide that.
  */
-final class LoadRelatedPosts implements LoadsRelatedPosts
+final class LoadRelatedPosts implements LoadsPosts
 {
-    public function handle(WinkPost $post): Builder
+    public function __construct(private WinkPost $post)
+    {
+    }
+
+    public function handle(): Builder
     {
         return WinkPost::query()
             ->with('author')
-            ->whereKeyNot($post->getKey())
-            ->whereHas('tags', fn (Builder $query) => $query->whereIn('id', $post->tags()->pluck('id')))
+            ->whereKeyNot($this->post->getKey())
+            ->whereHas('tags', fn (Builder $query) => $query->whereIn('id', $this->post->tags()->pluck('id')))
             ->orderByDesc('publish_date');
     }
 }

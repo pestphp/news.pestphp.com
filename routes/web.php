@@ -16,4 +16,5 @@ Route::post('/subscribe', [SubscriptionController::class, 'subscribe'])
     ->middleware('throttle:subscriptions')
     ->name('subscribe');
 
+Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
 Route::get('/posts/{post:slug}', [PostController::class, 'show'])->name('posts.show');

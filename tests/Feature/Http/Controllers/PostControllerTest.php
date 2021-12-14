@@ -46,3 +46,31 @@ it('limits the number of related posts to 3', function () {
             ->has('related_posts', 3) // 4 related posts but only 3 are loaded
         );
 });
+
+it('can load an index of paginated posts', function () {
+    $this->expectToUseAction(ProvidesPostResource::class, 'for')
+        ->andReturn(['title' => 'My Post Title']);
+
+    // There should be 12 posts per page
+    post()->count(13)->create();
+
+    $this->get(route('posts.index'))
+        ->assertInertia(fn (Assert $page) => $page
+            ->component('Blog')
+            ->has('posts.data', 12, fn (Assert $data) => $data->where('title', 'My Post Title'))
+        );
+});
+
+it('orders paginated posts by their publish date descending', function () {
+    $pastPost = post()->create(['publish_date' => now()->subDay()]);
+    $currentPost = post()->create(['publish_date' => now()->subMinute()]);
+
+    $this->get(route('posts.index'))
+        ->assertInertia(fn (Assert $page) => $page
+            ->component('Blog')
+            ->has('posts.data', fn (Assert $data) => $data
+                ->where('0.id', $currentPost->id)
+                ->where('1.id', $pastPost->id)
+            )
+        );
+});

@@ -40,6 +40,14 @@ class PostFactory extends Factory
         return $this->for($author, 'author');
     }
 
+    public function scheduled(CarbonInterface $publishDate = null): self
+    {
+        return $this->state([
+            'published' => true,
+            'publish_date' => $publishDate ?? now()->addDay(),
+        ]);
+    }
+
     public function unpublished(CarbonInterface $publishDate = null): self
     {
         return $this->state([
