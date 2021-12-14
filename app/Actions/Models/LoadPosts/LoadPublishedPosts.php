@@ -11,10 +11,16 @@ use Wink\WinkPost;
 final class LoadPublishedPosts implements LoadsPosts
 {
     /**
-     * @param Builder<WinkPost> $builder
+     * @var Builder<WinkPost>
      */
-    public function __construct(private Builder $builder)
+    private Builder $builder;
+
+    /**
+     * @param ?Builder<WinkPost> $builder
+     */
+    public function __construct(?Builder $builder = null)
     {
+        $this->builder = $builder ?? (new LoadPosts())->handle();
     }
 
     public function handle(): Builder

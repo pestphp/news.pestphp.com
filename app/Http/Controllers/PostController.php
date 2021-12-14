@@ -53,8 +53,6 @@ final class PostController extends Controller
      */
     private function publishedPosts(Builder $winkPostBuilder = null): Builder
     {
-        $winkPostBuilder ??= WinkPost::query()->with('author')->orderByDesc('publish_date');
-
         return (new LoadPublishedPosts($winkPostBuilder))->handle();
     }
 }
