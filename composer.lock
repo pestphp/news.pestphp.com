@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3a2aa90f1b2bcdce7317de765d89240d",
+    "content-hash": "423f30e4f8341b7c0a4e14472be3d6cf",
     "packages": [
         {
             "name": "artisansdk/ratelimiter",
@@ -2818,6 +2818,82 @@
             "time": "2021-11-30T19:35:32+00:00"
         },
         {
+            "name": "nunomaduro/termwind",
+            "version": "v1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nunomaduro/termwind.git",
+                "reference": "d4307db8155620cd39a34e8877d3dc8df45b0441"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nunomaduro/termwind/zipball/d4307db8155620cd39a34e8877d3dc8df45b0441",
+                "reference": "d4307db8155620cd39a34e8877d3dc8df45b0441",
+                "shasum": ""
+            },
+            "require": {
+                "ext-mbstring": "*",
+                "php": "^8.0",
+                "symfony/console": "^5.3.0|^6.0.0"
+            },
+            "require-dev": {
+                "ergebnis/phpstan-rules": "^0.15.3",
+                "pestphp/pest": "^2.0.0",
+                "phpstan/phpstan": "^0.12.99",
+                "phpstan/phpstan-strict-rules": "^0.12.11",
+                "styleci/cli": "^1.2.0",
+                "symfony/var-dumper": "^5.2.7|^6.0.0",
+                "thecodingmachine/phpstan-strict-rules": "^0.12.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Termwind\\": "src/"
+                },
+                "files": [
+                    "src/Functions.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nuno Maduro",
+                    "email": "enunomaduro@gmail.com"
+                }
+            ],
+            "description": "Its like Tailwind CSS, but for the console.",
+            "keywords": [
+                "cli",
+                "console",
+                "css",
+                "package",
+                "php",
+                "style"
+            ],
+            "support": {
+                "issues": "https://github.com/nunomaduro/termwind/issues",
+                "source": "https://github.com/nunomaduro/termwind/tree/v1.1.0"
+            },
+            "funding": [
+                {
+                    "url": "https://www.paypal.com/paypalme/enunomaduro",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/nunomaduro",
+                    "type": "github"
+                },
+                {
+                    "url": "https://github.com/xiCO2k",
+                    "type": "github"
+                }
+            ],
+            "time": "2021-12-06T20:01:30+00:00"
+        },
+        {
             "name": "opis/closure",
             "version": "3.6.2",
             "source": {
@@ -3961,6 +4037,99 @@
             "time": "2020-11-27T07:26:26+00:00"
         },
         {
+            "name": "spatie/laravel-health",
+            "version": "1.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/laravel-health.git",
+                "reference": "d193f2ecbea919e3f27f559fde51c1355bfd6713"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/laravel-health/zipball/d193f2ecbea919e3f27f559fde51c1355bfd6713",
+                "reference": "d193f2ecbea919e3f27f559fde51c1355bfd6713",
+                "shasum": ""
+            },
+            "require": {
+                "dragonmantank/cron-expression": "^3.1",
+                "guzzlehttp/guzzle": "^6.5|^7.4",
+                "illuminate/console": "^8.75",
+                "illuminate/contracts": "^8.75",
+                "illuminate/database": "^8.75",
+                "illuminate/notifications": "^8.75",
+                "illuminate/support": "^8.75",
+                "nunomaduro/termwind": "^1.1",
+                "php": "^8.0",
+                "spatie/enum": "^3.11",
+                "spatie/laravel-package-tools": "^1.9.2",
+                "spatie/regex": "^3.1",
+                "symfony/process": "^5.4|^6.0"
+            },
+            "require-dev": {
+                "laravel/horizon": "^5.7",
+                "laravel/slack-notification-channel": "^2.3",
+                "nunomaduro/collision": "^5.10",
+                "nunomaduro/larastan": "^1.0",
+                "orchestra/testbench": "^6.23",
+                "pestphp/pest": "^1.21",
+                "pestphp/pest-plugin-laravel": "^1.1",
+                "phpstan/extension-installer": "^1.1",
+                "phpstan/phpstan-deprecation-rules": "^1.0",
+                "phpstan/phpstan-phpunit": "^1.0",
+                "phpunit/phpunit": "^9.4",
+                "spatie/laravel-ray": "^1.26",
+                "spatie/pest-plugin-snapshots": "^1.1",
+                "spatie/pest-plugin-test-time": "^1.0",
+                "spatie/test-time": "^1.2"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Spatie\\Health\\HealthServiceProvider"
+                    ],
+                    "aliases": {
+                        "Skeleton": "Spatie\\Health\\Facades\\Health"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spatie\\Health\\": "src",
+                    "Spatie\\Health\\Database\\Factories\\": "database/factories"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Freek Van der Herten",
+                    "email": "freek@spatie.be",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Monitor the health of a Laravel application",
+            "homepage": "https://github.com/spatie/laravel-health",
+            "keywords": [
+                "laravel",
+                "laravel-health",
+                "spatie"
+            ],
+            "support": {
+                "issues": "https://github.com/spatie/laravel-health/issues",
+                "source": "https://github.com/spatie/laravel-health/tree/1.4.0"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/spatie",
+                    "type": "github"
+                }
+            ],
+            "time": "2021-12-14T15:24:25+00:00"
+        },
+        {
             "name": "spatie/laravel-json-api-paginate",
             "version": "1.11.0",
             "source": {
@@ -4862,6 +5031,69 @@
                 }
             ],
             "time": "2020-11-30T16:09:27+00:00"
+        },
+        {
+            "name": "spatie/regex",
+            "version": "3.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/regex.git",
+                "reference": "d543de2019a0068e7b80da0ba24f1c51c7469303"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/regex/zipball/d543de2019a0068e7b80da0ba24f1c51c7469303",
+                "reference": "d543de2019a0068e7b80da0ba24f1c51c7469303",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^8.0|^8.1"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^9.3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Spatie\\Regex\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Sebastian De Deyne",
+                    "email": "sebastian@spatie.be",
+                    "homepage": "https://spatie.be",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A sane interface for php's built in preg_* functions",
+            "homepage": "https://github.com/spatie/regex",
+            "keywords": [
+                "expression",
+                "expressions",
+                "regex",
+                "regular",
+                "spatie"
+            ],
+            "support": {
+                "issues": "https://github.com/spatie/regex/issues",
+                "source": "https://github.com/spatie/regex/tree/3.1.1"
+            },
+            "funding": [
+                {
+                    "url": "https://spatie.be/open-source/support-us",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/spatie",
+                    "type": "github"
+                }
+            ],
+            "time": "2021-11-30T21:13:59+00:00"
         },
         {
             "name": "spatie/simple-excel",

@@ -176,6 +176,7 @@ return [
         App\Providers\HorizonServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\ActionServiceProvider::class,
+        App\Providers\LaravelHealthServiceProvider::class,
     ],
 
     /*

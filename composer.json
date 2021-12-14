@@ -13,6 +13,7 @@
         "laravel/horizon": "^5.7",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
+        "spatie/laravel-health": "^1.4",
         "spatie/laravel-mailcoach": "^4.0",
         "themsaid/wink": "^1.2",
         "tightenco/ziggy": "^1.4"
