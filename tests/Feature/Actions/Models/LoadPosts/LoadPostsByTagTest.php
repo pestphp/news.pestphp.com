@@ -34,3 +34,26 @@ it('can be passed a custom builder', function () {
         ->toHaveCount(1)
         ->first()->is($publishedPost)->toBeTrue();
 });
+
+it('loads all tags if an empty array is passed', function () {
+    $fooTag = tag()->create(['slug' => 'foo']);
+    $barTag = tag()->create(['slug' => 'bar']);
+
+    $fooPost = post()->hasTags($fooTag)->create();
+    $barPost = post()->hasTags($barTag)->create();
+    $foobarPost = post()->hasTags(WinkTag::all())->create();
+    $postsWithoutTag = post()->count(2)->create();
+
+    $action = new LoadPostsByTag(['tags' => []]);
+
+    expect($action->handle()->get())->toHaveCount(5);
+});
+
+it('requires valid data', function (mixed $data, array $errors) {
+    $action = new LoadPostsByTag($data);
+
+    expect(fn () => $action->handle())->toHaveErrors($errors);
+})->with([
+    'not an array' => [['tags' => null], ['tags' => 'array']],
+    'tag doesn\'t exist in database' => [['tags' => ['foo']], ['tags.0' => 'in']],
+]);

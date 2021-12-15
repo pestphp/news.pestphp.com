@@ -72,7 +72,8 @@ export default {
     },
     data() {
         return {
-            allPosts: this.posts.data
+            allPosts: this.posts.data,
+            initialUrl: this.$page.url,
         }
     },
     methods: {
@@ -85,7 +86,10 @@ export default {
                 preserveState: true,
                 preserveScroll: true,
                 only: ['posts'],
-                onSuccess: () => this.allPosts = [...this.allPosts, ...this.posts.data]
+                onSuccess: () => {
+                    this.allPosts = [...this.allPosts, ...this.posts.data]
+                    window.history.replaceState({}, this.$page.title, this.initialUrl)
+                }
             })
         }
     }

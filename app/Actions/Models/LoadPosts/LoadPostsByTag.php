@@ -34,13 +34,13 @@ final class LoadPostsByTag implements LoadsPosts
     public function handle(): Builder
     {
         $data = Validator::validate($this->data, [
-            'tags' => ['required', 'array', 'min:1'],
+            'tags' => ['array'],
             'tags.*' => ['string', 'exists:wink_tags,slug'],
         ]);
 
-        return $this->builder->whereHas(
-            'tags',
-            fn (Builder $query) => $query->whereIn('slug', $data['tags'])
+        return $this->builder->when(
+            count($data['tags']) > 0,
+            fn ($query) => $query->whereHas('tags', fn (Builder $query) => $query->whereIn('slug', $data['tags']))
         );
     }
 }

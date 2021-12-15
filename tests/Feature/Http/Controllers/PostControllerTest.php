@@ -48,6 +48,7 @@ it('limits the number of related posts to 3', function () {
 });
 
 it('can load an index of paginated posts', function () {
+    $this->withoutExceptionHandling();
     $this->expectToUseAction(ProvidesPostResource::class, 'for')
         ->andReturn(['title' => 'My Post Title']);
 
@@ -72,5 +73,18 @@ it('orders paginated posts by their publish date descending', function () {
                 ->where('0.id', $currentPost->id)
                 ->where('1.id', $pastPost->id)
             )
+        );
+});
+
+it('can limit the post index by tag', function () {
+    $tag = tag()->create();
+
+    post()->count(2)->hasTags($tag)->create();
+    post()->count(3)->create();
+
+    $this->get(route('posts.index', ['tags' => [$tag->slug]]))
+        ->assertInertia(fn (Assert $page) => $page
+            ->component('Blog')
+            ->has('posts.data', 2)
         );
 });

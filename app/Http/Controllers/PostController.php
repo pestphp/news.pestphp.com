@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
+use App\Actions\Models\LoadPosts\LoadPostsByTag;
 use App\Actions\Models\LoadPosts\LoadPublishedPosts;
 use App\Actions\Models\LoadPosts\LoadRelatedPosts;
 use App\Contracts\Actions\Resources\ProvidesPostResource;
@@ -23,7 +24,10 @@ final class PostController extends Controller
 
     public function index(Request $request): Response
     {
-        $posts = $this->publishedPosts()
+        $data = ['tags' => $request->get('tags', [])];
+
+        $posts = $this
+            ->publishedPosts((new LoadPostsByTag($data))->handle())
             ->paginate(12)
             ->through(fn (WinkPost $post) => $this->postResourceProvider->for($post, $request));
 

@@ -20148,7 +20148,8 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
   },
   data: function data() {
     return {
-      allPosts: this.posts.data
+      allPosts: this.posts.data,
+      initialUrl: this.$page.url
     };
   },
   methods: {
@@ -20164,7 +20165,8 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         preserveScroll: true,
         only: ['posts'],
         onSuccess: function onSuccess() {
-          return _this2.allPosts = [].concat(_toConsumableArray(_this2.allPosts), _toConsumableArray(_this2.posts.data));
+          _this2.allPosts = [].concat(_toConsumableArray(_this2.allPosts), _toConsumableArray(_this2.posts.data));
+          window.history.replaceState({}, _this2.$page.title, _this2.initialUrl);
         }
       });
     }
