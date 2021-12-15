@@ -47,12 +47,12 @@
 </template>
 
 <script>
-import Head from "../Shared/Meta/Head"
-import Container from "../Shared/Layout/Container";
-import AuthorLeftAligned from "../Shared/Author/LeftAligned";
+import Head from "../../Shared/Meta/Head"
+import Container from "../../Shared/Layout/Container";
+import AuthorLeftAligned from "../../Shared/Author/LeftAligned";
 import {InertiaLink} from "@inertiajs/inertia-vue3";
-import Button from "../Shared/Form/Button";
-import Info from "../Shared/Layout/Alert/Info";
+import Button from "../../Shared/Form/Button";
+import Info from "../../Shared/Layout/Alert/Info";
 
 export default {
     name: "Blog",

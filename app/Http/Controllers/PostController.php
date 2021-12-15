@@ -10,6 +10,7 @@ use App\Actions\Models\LoadPosts\LoadRelatedPosts;
 use App\Contracts\Actions\Resources\ProvidesPostResource;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Route;
 use Inertia\Inertia;
 use Inertia\Response;
 use Symfony\Component\HttpFoundation\Response as ResponseCode;
@@ -24,14 +25,19 @@ final class PostController extends Controller
 
     public function index(Request $request): Response
     {
-        $data = ['tags' => $request->get('tags', [])];
+        $route = $request->route() instanceof Route ? $request->route()->getName() : null;
+
+        $tags = [...$request->get('tags', []), ...match ($route) {
+            'blog' => ['blog'],
+            default => [],
+        }];
 
         $posts = $this
-            ->publishedPosts((new LoadPostsByTag($data))->handle())
+            ->publishedPosts((new LoadPostsByTag(['tags' => $tags]))->handle())
             ->paginate(12)
             ->through(fn (WinkPost $post) => $this->postResourceProvider->for($post, $request));
 
-        return Inertia::render('Blog', ['posts' => $posts]);
+        return Inertia::render('Posts/Index', ['posts' => $posts]);
     }
 
     public function show(Request $request, WinkPost $post): Response
@@ -44,7 +50,7 @@ final class PostController extends Controller
             ->limit(3)
             ->get();
 
-        return Inertia::render('Post', [
+        return Inertia::render('Posts/Show', [
             'post' => $this->postResourceProvider->for($post, $request),
             'related_posts' => $this->postResourceProvider->forAll($relatedPosts, $request),
         ]);

@@ -59,14 +59,14 @@
 </template>
 
 <script>
-import Head from "../Shared/Meta/Head"
-import Container from "../Shared/Layout/Container";
-import Heading from "../Shared/Layout/Heading";
-import AuthorCentered from "../Shared/Author/Centered";
-import Info from "../Shared/Layout/Alert/Info";
+import Head from "../../Shared/Meta/Head"
+import Container from "../../Shared/Layout/Container";
+import Heading from "../../Shared/Layout/Heading";
+import AuthorCentered from "../../Shared/Author/Centered";
+import Info from "../../Shared/Layout/Alert/Info";
 import {InertiaLink} from "@inertiajs/inertia-vue3";
-import RelatedPosts from "../Shared/Post/RelatedPosts";
-import SimpleSubscribeForm from "../Shared/MailingList/SimpleSubscribeForm";
+import RelatedPosts from "../../Shared/Post/RelatedPosts";
+import SimpleSubscribeForm from "../../Shared/MailingList/SimpleSubscribeForm";
 
 export default {
     name: "Post",

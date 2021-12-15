@@ -12,7 +12,7 @@ it('can display a post for a guest', function () {
     $this->get(route('posts.show', post()->create()))
         ->assertOk()
         ->assertInertia(fn (Assert $page) => $page
-            ->component('Post')
+            ->component('Posts/Show')
             ->where('post', ['title' => 'My Post Title'])
         );
 });
@@ -34,7 +34,7 @@ it('can displayed related posts', function () {
     $this->get(route('posts.show', post()->create()))
         ->assertOk()
         ->assertInertia(fn (Assert $page) => $page
-            ->component('Post')
+            ->component('Posts/Show')
             ->where('related_posts', [['title' => 'My Post Title']])
         );
 });
@@ -42,7 +42,7 @@ it('can displayed related posts', function () {
 it('limits the number of related posts to 3', function () {
     $this->get(route('posts.show', post()->withRelatedPosts(4)->create()))
         ->assertInertia(fn (Assert $page) => $page
-            ->component('Post')
+            ->component('Posts/Show')
             ->has('related_posts', 3) // 4 related posts but only 3 are loaded
         );
 });
@@ -57,7 +57,7 @@ it('can load an index of paginated posts', function () {
 
     $this->get(route('posts.index'))
         ->assertInertia(fn (Assert $page) => $page
-            ->component('Blog')
+            ->component('Posts/Index')
             ->has('posts.data', 12, fn (Assert $data) => $data->where('title', 'My Post Title'))
         );
 });
@@ -68,7 +68,6 @@ it('orders paginated posts by their publish date descending', function () {
 
     $this->get(route('posts.index'))
         ->assertInertia(fn (Assert $page) => $page
-            ->component('Blog')
             ->has('posts.data', fn (Assert $data) => $data
                 ->where('0.id', $currentPost->id)
                 ->where('1.id', $pastPost->id)
@@ -84,7 +83,16 @@ it('can limit the post index by tag', function () {
 
     $this->get(route('posts.index', ['tags' => [$tag->slug]]))
         ->assertInertia(fn (Assert $page) => $page
-            ->component('Blog')
             ->has('posts.data', 2)
         );
+});
+
+it('can access a list of blog posts via the blog route', function () {
+    post()->count(3)->hasTags(tag()->blog())->create();
+    post()->count(2)->create();
+
+    $this->get(route('blog'))->assertInertia(fn (Assert $page) => $page
+        ->component('Posts/Index')
+        ->has('posts.data', 3)
+    );
 });

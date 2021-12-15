@@ -29,7 +29,7 @@ it('returns the Post vue component', function () {
     $this->actingAs($author)
         ->get(route('admin.preview', $post))
         ->assertInertia(fn (Assert $page) => $page
-            ->component('Post')
+            ->component('Posts/Show')
             ->where('post', ['title' => 'Hello World'])
             ->where('preview', true)
         );
@@ -43,7 +43,7 @@ it('can displayed related posts', function () {
         ->get(route('admin.preview', post()->create()))
         ->assertOk()
         ->assertInertia(fn (Assert $page) => $page
-            ->component('Post')
+            ->component('Posts/Show')
             ->where('related_posts', [['title' => 'My Post Title']])
         );
 });
@@ -52,7 +52,7 @@ it('limits the number of related posts to 3', function () {
     $this->actingAs(author()->make())
         ->get(route('admin.preview', post()->withRelatedPosts(4)->create()))
         ->assertInertia(fn (Assert $page) => $page
-            ->component('Post')
+            ->component('Posts/Show')
             ->has('related_posts', 3) // 4 related posts but only 3 are loaded
         );
 });
