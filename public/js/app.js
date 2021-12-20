@@ -20186,7 +20186,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     loadMorePosts: function loadMorePosts() {
       var _this2 = this;
 
-      if (this.posts.next_page_url === null) {
+      if (this.posts.hasMore === null) {
         return;
       }
 

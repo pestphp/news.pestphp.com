@@ -78,7 +78,7 @@ export default {
     },
     methods: {
         loadMorePosts() {
-            if (this.posts.next_page_url === null) {
+            if (this.posts.hasMore === null) {
                 return
             }
 

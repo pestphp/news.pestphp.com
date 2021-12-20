@@ -14,6 +14,7 @@ final class LoadPosts implements LoadsPosts
     {
         return WinkPost::query()
             ->with('author')
-            ->orderByDesc('publish_date');
+            ->orderByDesc('publish_date')
+            ->orderByDesc('id');
     }
 }
