@@ -8,13 +8,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', HomeController::class)->name('home');
 Route::redirect('/login', '/wink/login')->name('login');
 
-Route::get('/blog', function () {
-    return inertia('Blog');
-})->name('blog');
-
 Route::post('/subscribe', [SubscriptionController::class, 'subscribe'])
     ->middleware('throttle:subscriptions')
     ->name('subscribe');
 
 Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
+Route::get('/blog', [PostController::class, 'index'])->name('blog');
+
 Route::get('/posts/{post:slug}', [PostController::class, 'show'])->name('posts.show');

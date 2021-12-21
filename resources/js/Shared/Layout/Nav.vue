@@ -1,7 +1,7 @@
 <template>
     <ul class="flex space-x-6">
         <NavLink :href="route('home')" page="Home">Home</NavLink>
-        <NavLink :href="route('posts.index')" page="Blog">Blog</NavLink>
+        <NavLink :href="route('blog')" page="Posts/Index">Blog</NavLink>
         <NavLink href="https://pestphp.com/docs">Docs</NavLink>
     </ul>
 </template>

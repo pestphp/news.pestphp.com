@@ -5,18 +5,16 @@ declare(strict_types=1);
 namespace Tests;
 
 use Database\Seeders\EmailListSeeder;
-use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
 
 abstract class TestCase extends BaseTestCase
 {
     use CreatesApplication;
-    use RefreshDatabase;
+    use LazilyRefreshDatabase;
 
-    protected function setUp(): void
+    protected function afterRefreshingDatabase(): void
     {
-        parent::setUp();
-
         $this->artisan('migrate', [
             '--path' => 'vendor/themsaid/wink/src/Migrations',
         ]);

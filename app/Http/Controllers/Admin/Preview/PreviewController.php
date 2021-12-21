@@ -22,7 +22,7 @@ final class PreviewController extends Controller
     {
         $relatedPosts = (new LoadRelatedPublishedPostsAsProphet($post))->handle()->limit(3)->get();
 
-        return Inertia::render('Post', [
+        return Inertia::render('Posts/Show', [
             'post' => $this->postResourceProvider->for($post, $request),
             'related_posts' => $this->postResourceProvider->forAll($relatedPosts, $request),
             'preview' => true,

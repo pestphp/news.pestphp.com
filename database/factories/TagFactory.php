@@ -23,4 +23,10 @@ class TagFactory extends Factory
             'name' => $this->faker->word,
         ];
     }
+
+    public function blog(): WinkTag
+    {
+        // @phpstan-ignore-next-line
+        return $this->create(['name' => 'Blog', 'slug' => 'blog']);
+    }
 }
