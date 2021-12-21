@@ -21,7 +21,7 @@
                 </div>
             </nav>
             <p class="mt-8 text-center text-base text-gray-400">
-                &copy; 2021 Pest
+                &copy; 2021 Pest | Code highlighting provided by <a href="https://torchlight.dev" class="text-pest-green-500 hover:text-pest-green-700">Torchlight</a>
             </p>
         </div>
     </footer>
