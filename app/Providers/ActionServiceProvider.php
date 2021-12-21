@@ -14,7 +14,6 @@ use App\Contracts\Actions\Newsletters\SendsTestNewsletter;
 use App\Contracts\Actions\Resources\ProvidesPostResource;
 use App\Contracts\Actions\Subscriptions\CreatesSubscription;
 use App\Contracts\Actions\Subscriptions\DeletesSubscription;
-use Illuminate\Contracts\Events\Dispatcher;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\ServiceProvider;
 use Spatie\Mailcoach\Domain\Audience\Models\EmailList;
@@ -36,7 +35,6 @@ final class ActionServiceProvider extends ServiceProvider
     {
         $this->app->bind(CreateNewsletter::class, function (Application $app) {
             return new CreateNewsletter(
-                $app->make(Dispatcher::class),
                 $app->make(EmailList::class),
                 $app->make('config')->get('mail.from.address'),
             );

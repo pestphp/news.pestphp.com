@@ -6,15 +6,12 @@ namespace App\Actions\Newsletters;
 
 use App\Actions\Models\LoadPosts\LoadPublishedPosts;
 use App\Contracts\Actions\Newsletters\CreatesNewsletter;
-use App\Events\NewsletterCreated;
-use Illuminate\Contracts\Events\Dispatcher;
 use Spatie\Mailcoach\Domain\Audience\Models\EmailList;
 use Spatie\Mailcoach\Domain\Campaign\Models\Campaign;
 
 final class CreateNewsletter implements CreatesNewsletter
 {
     public function __construct(
-        private Dispatcher $event,
         private EmailList $emailList,
         private string $fromEmail,
     ) {
@@ -34,8 +31,6 @@ final class CreateNewsletter implements CreatesNewsletter
             'html' => view('newsletter.content', ['posts' => $postsFromLastWeek])->render(),
             'email_list_id' => $this->emailList->getKey(),
         ]);
-
-        $this->event->dispatch(new NewsletterCreated($campaign));
 
         return $campaign;
     }
