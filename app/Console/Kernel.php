@@ -6,6 +6,7 @@ namespace App\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use Spatie\Health\Commands\RunHealthChecksCommand;
 
 final class Kernel extends ConsoleKernel
 {
@@ -24,6 +25,8 @@ final class Kernel extends ConsoleKernel
         $schedule->command('mailcoach:run-automation-actions')->everyMinute()->runInBackground();
         $schedule->command('mailcoach:delete-old-unconfirmed-subscribers')->daily();
         $schedule->command('mailcoach:cleanup-processed-feedback')->hourly();
+
+        $schedule->command(RunHealthChecksCommand::class)->everyMinute();
     }
 
     /**
