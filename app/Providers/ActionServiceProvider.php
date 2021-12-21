@@ -5,11 +5,13 @@ declare(strict_types=1);
 namespace App\Providers;
 
 use App\Actions\Newsletters\CreateNewsletter;
+use App\Actions\Newsletters\SendNewsletter;
 use App\Actions\Newsletters\SendTestNewsletter;
 use App\Actions\Resources\ProvidePostResource;
 use App\Actions\Subscriptions\CreateSubscription;
 use App\Actions\Subscriptions\DeleteSubscription;
 use App\Contracts\Actions\Newsletters\CreatesNewsletter;
+use App\Contracts\Actions\Newsletters\SendsNewsletter;
 use App\Contracts\Actions\Newsletters\SendsTestNewsletter;
 use App\Contracts\Actions\Resources\ProvidesPostResource;
 use App\Contracts\Actions\Subscriptions\CreatesSubscription;
@@ -29,6 +31,7 @@ final class ActionServiceProvider extends ServiceProvider
         DeletesSubscription::class => DeleteSubscription::class,
         CreatesNewsletter::class => CreateNewsletter::class,
         SendsTestNewsletter::class => SendTestNewsletter::class,
+        SendsNewsletter::class => SendNewsletter::class,
     ];
 
     public function register(): void
