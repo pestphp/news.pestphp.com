@@ -12215,16 +12215,16 @@
         },
         {
             "name": "spatie/laravel-ray",
-            "version": "1.26.4",
+            "version": "1.26.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-ray.git",
-                "reference": "eebd571834d3940b1d8314950198b4ae71789a82"
+                "reference": "857d8fe465dbc025cbeb2735fe690ff9496f5f98"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-ray/zipball/eebd571834d3940b1d8314950198b4ae71789a82",
-                "reference": "eebd571834d3940b1d8314950198b4ae71789a82",
+                "url": "https://api.github.com/repos/spatie/laravel-ray/zipball/857d8fe465dbc025cbeb2735fe690ff9496f5f98",
+                "reference": "857d8fe465dbc025cbeb2735fe690ff9496f5f98",
                 "shasum": ""
             },
             "require": {
@@ -12236,7 +12236,7 @@
                 "php": "^7.3|^8.0",
                 "spatie/backtrace": "^1.0",
                 "spatie/ray": "^1.27.1",
-                "symfony/stopwatch": "4.2|^5.1",
+                "symfony/stopwatch": "4.2|^5.1|^6.0",
                 "zbateson/mail-mime-parser": "^1.3.1|^2.0"
             },
             "require-dev": {
@@ -12281,7 +12281,7 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/laravel-ray/issues",
-                "source": "https://github.com/spatie/laravel-ray/tree/1.26.4"
+                "source": "https://github.com/spatie/laravel-ray/tree/1.26.5"
             },
             "funding": [
                 {
@@ -12293,7 +12293,7 @@
                     "type": "other"
                 }
             ],
-            "time": "2021-12-10T12:10:14+00:00"
+            "time": "2021-12-21T13:51:47+00:00"
         },
         {
             "name": "spatie/macroable",

@@ -29,4 +29,9 @@ abstract class TestCase extends BaseTestCase
     {
         return $this->spy($action)->shouldReceive($method)->atLeast()->once();
     }
+
+    protected function expectNotToUseAction(string $action, string $method = 'handle')
+    {
+        return $this->spy($action)->shouldNotReceive($method);
+    }
 }

@@ -2,18 +2,32 @@
 
 namespace Database\Seeders;
 
+use Database\Factories\AuthorFactory;
 use Database\Factories\PostFactory;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
+use Wink\WinkAuthor;
 use Wink\WinkTag;
 
 class PostSeeder extends Seeder
 {
+    private ?WinkAuthor $author = null;
+
+    public function forAuthor(WinkAuthor $author): self
+    {
+        $this->author = $author;
+
+        return $this;
+    }
+
     public function run(): void
     {
-        PostFactory::new()->count(10)->create();
-        PostFactory::new()->count(30)->hasTags($this->tag('blog'))->create();
-        PostFactory::new()->count(5)->hasTags($this->tag('blog'))->unpublished()->create();
+        /** @var WinkAuthor $author */
+        $author = $this->author ?? AuthorFactory::new()->create();
+
+        PostFactory::new()->count(10)->for($author, 'author')->create();
+        PostFactory::new()->count(30)->for($author, 'author')->hasTags($this->tag('blog'))->create();
+        PostFactory::new()->count(5)->for($author, 'author')->hasTags($this->tag('blog'))->unpublished()->create();
     }
 
     private function tag(string $slug): WinkTag
