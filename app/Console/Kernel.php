@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Console;
 
+use App\Console\Commands\BuildNewsletterCommand;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 use Spatie\Health\Commands\RunHealthChecksCommand;
@@ -17,6 +18,8 @@ final class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
+        $schedule->command(BuildNewsletterCommand::class, ['--force' => true])->fridays()->at('17:00');
+
         $schedule->command('mailcoach:calculate-statistics')->everyMinute();
         $schedule->command('mailcoach:send-scheduled-campaigns')->everyMinute();
         $schedule->command('mailcoach:send-campaign-summary-mail')->hourly();
