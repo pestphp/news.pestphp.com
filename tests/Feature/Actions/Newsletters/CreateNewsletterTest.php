@@ -2,11 +2,16 @@
 
 declare(strict_types=1);
 
+use App\Actions\Newsletters\CreateNewsletter;
 use App\Contracts\Actions\Newsletters\CreatesNewsletter;
 use App\Events\NewsletterCreated;
 use Illuminate\Support\Facades\Event;
 use Spatie\Mailcoach\Domain\Campaign\Models\Campaign;
 use Wink\WinkPost;
+
+it('is the default implementation', function () {
+    expect($this->app->make(CreatesNewsletter::class))->toBeInstanceOf(CreateNewsletter::class);
+});
 
 it('creates a newsletter', function () {
     expect(Campaign::count())->toBe(0);
