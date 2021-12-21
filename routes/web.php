@@ -4,6 +4,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\SubscriptionController;
 use Illuminate\Support\Facades\Route;
+use Spatie\Health\Http\Controllers\HealthCheckResultsController;
 
 Route::get('/', HomeController::class)->name('home');
 Route::redirect('/login', '/wink/login')->name('login');
@@ -16,3 +17,5 @@ Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
 Route::get('/blog', [PostController::class, 'index'])->name('blog');
 
 Route::get('/posts/{post:slug}', [PostController::class, 'show'])->name('posts.show');
+
+Route::get('/health', HealthCheckResultsController::class);

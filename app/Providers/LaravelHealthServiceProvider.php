@@ -19,7 +19,7 @@ final class LaravelHealthServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Health::checks([
-            PingCheck::new()->url('/'),
+            PingCheck::new()->url('/')->label('Homepage'),
             DebugModeCheck::new(),
             EnvironmentCheck::new(),
             HorizonCheck::new(),

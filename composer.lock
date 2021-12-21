@@ -2819,16 +2819,16 @@
         },
         {
             "name": "nunomaduro/termwind",
-            "version": "v1.1.0",
+            "version": "v1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nunomaduro/termwind.git",
-                "reference": "d4307db8155620cd39a34e8877d3dc8df45b0441"
+                "reference": "a03cc7067ea9ee95ce69aa10359025ef631b9c07"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nunomaduro/termwind/zipball/d4307db8155620cd39a34e8877d3dc8df45b0441",
-                "reference": "d4307db8155620cd39a34e8877d3dc8df45b0441",
+                "url": "https://api.github.com/repos/nunomaduro/termwind/zipball/a03cc7067ea9ee95ce69aa10359025ef631b9c07",
+                "reference": "a03cc7067ea9ee95ce69aa10359025ef631b9c07",
                 "shasum": ""
             },
             "require": {
@@ -2875,7 +2875,7 @@
             ],
             "support": {
                 "issues": "https://github.com/nunomaduro/termwind/issues",
-                "source": "https://github.com/nunomaduro/termwind/tree/v1.1.0"
+                "source": "https://github.com/nunomaduro/termwind/tree/v1.2.0"
             },
             "funding": [
                 {
@@ -2891,7 +2891,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-12-06T20:01:30+00:00"
+            "time": "2021-12-16T00:58:11+00:00"
         },
         {
             "name": "opis/closure",
@@ -4038,16 +4038,16 @@
         },
         {
             "name": "spatie/laravel-health",
-            "version": "1.4.0",
+            "version": "1.7.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-health.git",
-                "reference": "d193f2ecbea919e3f27f559fde51c1355bfd6713"
+                "reference": "4b01c4921252aabd9627e46829ebfa5016ef2a86"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-health/zipball/d193f2ecbea919e3f27f559fde51c1355bfd6713",
-                "reference": "d193f2ecbea919e3f27f559fde51c1355bfd6713",
+                "url": "https://api.github.com/repos/spatie/laravel-health/zipball/4b01c4921252aabd9627e46829ebfa5016ef2a86",
+                "reference": "4b01c4921252aabd9627e46829ebfa5016ef2a86",
                 "shasum": ""
             },
             "require": {
@@ -4119,7 +4119,7 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/laravel-health/issues",
-                "source": "https://github.com/spatie/laravel-health/tree/1.4.0"
+                "source": "https://github.com/spatie/laravel-health/tree/1.7.4"
             },
             "funding": [
                 {
@@ -4127,7 +4127,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-12-14T15:24:25+00:00"
+            "time": "2021-12-21T00:50:09+00:00"
         },
         {
             "name": "spatie/laravel-json-api-paginate",
