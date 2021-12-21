@@ -60,7 +60,7 @@ export default {
     mounted() {
         const observer = new IntersectionObserver(entries => entries.forEach(entry => entry.isIntersecting && this.loadMorePosts(), {
             rootMargin: "-150px 0px 0px 0px"
-        }));
+        }))
 
         observer.observe(this.$refs.loadMoreIntersect)
     },

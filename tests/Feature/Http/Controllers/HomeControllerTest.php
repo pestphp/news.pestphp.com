@@ -14,11 +14,11 @@ it('sends the latest posts as a paginated collection', function () {
     $this->expectToUseAction(ProvidesPostResource::class, 'for')
         ->andReturn(['title' => 'Hello World']);
 
-    post()->count(4)->create();
+    post()->count(13)->create();
 
     $this->get(route('home'))
         ->assertInertia(fn (Assert $page) => $page
-            ->has('posts.data', 3, fn (Assert $item) => $item
+            ->has('posts.data', 12, fn (Assert $item) => $item
                 ->where('title', 'Hello World')
             )
         );

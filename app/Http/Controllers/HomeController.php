@@ -21,7 +21,7 @@ final class HomeController extends Controller
     {
         $posts = fn () => (new LoadPublishedPosts())
             ->handle()
-            ->paginate(3)
+            ->paginate(12)
             ->through(fn (WinkPost $post) => $this->postResourceProvider->for($post, $request));
 
         return Inertia::render('Home', [
