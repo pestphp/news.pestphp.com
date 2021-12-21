@@ -9,7 +9,7 @@ use Illuminate\Console\Command;
 
 final class SubscribeCommand extends Command
 {
-    protected $signature = 'pest:subscribe {email?} {first_name?} {last_name?}';
+    protected $signature = 'site:subscribe {email?} {first_name?} {last_name?}';
 
     protected $description = 'Subscribe a user to the Pest Newsletter';
 

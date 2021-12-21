@@ -1,5 +1,5 @@
 <template>
-    <header class="py-4 px-6 flex justify-between items-center shadow">
+    <header class="bg-white py-4 px-6 flex justify-between items-center shadow">
         <Logo/>
         <Nav/>
     </header>

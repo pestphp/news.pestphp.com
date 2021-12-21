@@ -19,5 +19,12 @@ class DatabaseSeeder extends Seeder
 
         // @phpstan-ignore-next-line
         $this->resolve(EmailListSeeder::class)->run();
+        // @phpstan-ignore-next-line
+        $this->resolve(TagSeeder::class)->run();
+
+        if (app()->environment('local')) {
+            // @phpstan-ignore-next-line
+            $this->resolve(PostSeeder::class)->run();
+        }
     }
 }

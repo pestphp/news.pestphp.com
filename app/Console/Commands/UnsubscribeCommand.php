@@ -9,7 +9,7 @@ use Illuminate\Console\Command;
 
 final class UnsubscribeCommand extends Command
 {
-    protected $signature = 'pest:unsubscribe {email?}';
+    protected $signature = 'site:unsubscribe {email?}';
 
     protected $description = 'Unsubscribes a subscriber from the Pest Newsletter';
 
