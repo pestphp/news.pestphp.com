@@ -18,4 +18,4 @@ Route::get('/blog', [PostController::class, 'index'])->name('blog');
 
 Route::get('/posts/{post:slug}', [PostController::class, 'show'])->name('posts.show');
 
-Route::get('/health', HealthCheckResultsController::class);
+Route::get('/health', HealthCheckResultsController::class)->name('health');
