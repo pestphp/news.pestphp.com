@@ -47,12 +47,12 @@
 </template>
 
 <script>
-import Head from "../Shared/Meta/Head"
-import Container from "../Shared/Layout/Container";
-import AuthorLeftAligned from "../Shared/Author/LeftAligned";
+import Head from "../../Shared/Meta/Head"
+import Container from "../../Shared/Layout/Container";
+import AuthorLeftAligned from "../../Shared/Author/LeftAligned";
 import {InertiaLink} from "@inertiajs/inertia-vue3";
-import Button from "../Shared/Form/Button";
-import Info from "../Shared/Layout/Alert/Info";
+import Button from "../../Shared/Form/Button";
+import Info from "../../Shared/Layout/Alert/Info";
 
 export default {
     name: "Blog",
@@ -60,7 +60,7 @@ export default {
     mounted() {
         const observer = new IntersectionObserver(entries => entries.forEach(entry => entry.isIntersecting && this.loadMorePosts(), {
             rootMargin: "-150px 0px 0px 0px"
-        }));
+        }))
 
         observer.observe(this.$refs.loadMoreIntersect)
     },
@@ -72,12 +72,13 @@ export default {
     },
     data() {
         return {
-            allPosts: this.posts.data
+            allPosts: this.posts.data,
+            initialUrl: this.$page.url,
         }
     },
     methods: {
         loadMorePosts() {
-            if (this.posts.next_page_url === null) {
+            if (this.posts.hasMore === null) {
                 return
             }
 
@@ -85,7 +86,10 @@ export default {
                 preserveState: true,
                 preserveScroll: true,
                 only: ['posts'],
-                onSuccess: () => this.allPosts = [...this.allPosts, ...this.posts.data]
+                onSuccess: () => {
+                    this.allPosts = [...this.allPosts, ...this.posts.data]
+                    window.history.replaceState({}, this.$page.title, this.initialUrl)
+                }
             })
         }
     }

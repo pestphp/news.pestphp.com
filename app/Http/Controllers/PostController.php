@@ -4,11 +4,13 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
+use App\Actions\Models\LoadPosts\LoadPostsByTag;
 use App\Actions\Models\LoadPosts\LoadPublishedPosts;
 use App\Actions\Models\LoadPosts\LoadRelatedPosts;
 use App\Contracts\Actions\Resources\ProvidesPostResource;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Route;
 use Inertia\Inertia;
 use Inertia\Response;
 use Symfony\Component\HttpFoundation\Response as ResponseCode;
@@ -23,11 +25,19 @@ final class PostController extends Controller
 
     public function index(Request $request): Response
     {
-        $posts = $this->publishedPosts()
+        $route = $request->route() instanceof Route ? $request->route()->getName() : null;
+
+        $tags = [...$request->get('tags', []), ...match ($route) {
+            'blog' => ['blog'],
+            default => [],
+        }];
+
+        $posts = $this
+            ->publishedPosts((new LoadPostsByTag(['tags' => $tags]))->handle())
             ->paginate(12)
             ->through(fn (WinkPost $post) => $this->postResourceProvider->for($post, $request));
 
-        return Inertia::render('Blog', ['posts' => $posts]);
+        return Inertia::render('Posts/Index', ['posts' => $posts]);
     }
 
     public function show(Request $request, WinkPost $post): Response
@@ -40,7 +50,7 @@ final class PostController extends Controller
             ->limit(3)
             ->get();
 
-        return Inertia::render('Post', [
+        return Inertia::render('Posts/Show', [
             'post' => $this->postResourceProvider->for($post, $request),
             'related_posts' => $this->postResourceProvider->forAll($relatedPosts, $request),
         ]);
@@ -53,8 +63,6 @@ final class PostController extends Controller
      */
     private function publishedPosts(Builder $winkPostBuilder = null): Builder
     {
-        $winkPostBuilder ??= WinkPost::query()->with('author')->orderByDesc('publish_date');
-
         return (new LoadPublishedPosts($winkPostBuilder))->handle();
     }
 }

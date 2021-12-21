@@ -1,5 +1,5 @@
 <template>
-    <div class="flex flex-col min-h-screen">
+    <div class="flex flex-col min-h-screen bg-gray-50">
         <Header/>
         <div class="flex-grow">
             <Banner :content="$page.props.flash.error ?? $page.props.flash.message"
