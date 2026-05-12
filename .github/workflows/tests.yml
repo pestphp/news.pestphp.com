@@ -12,11 +12,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: shivammathur/setup-php@15c43e89cdef867065b0213be354c2841860869e
+    - uses: shivammathur/setup-php@45e37a5311835edf589763a5cde3a7a7ef2ebbac
       with:
         php-version: '8.0'
         
-    - uses: actions/checkout@ee0669bd1cc54295c223e0bb666b733df41de1c5 # v2
+    - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
     
     - name: Copy .env
       run: php -r "file_exists('.env') || copy('.env.example', '.env');"
