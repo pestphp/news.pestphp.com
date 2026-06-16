@@ -13,18 +13,19 @@ class DatabaseSeeder extends Seeder
     {
         WinkAuthor::query()->delete();
 
-        if ($app->environment('local')) {
-            AuthorFactory::new()->create(['email' => 'luke@downing.tech']);
-        }
-
         // @phpstan-ignore-next-line
         $this->resolve(EmailListSeeder::class)->run();
         // @phpstan-ignore-next-line
         $this->resolve(TagSeeder::class)->run();
 
-        if (app()->environment('local')) {
+        if ($app->environment('local')) {
+            $author = AuthorFactory::new()->create([
+                'email' => 'luke@downing.tech',
+                'name' => 'Luke Downing',
+            ]);
+
             // @phpstan-ignore-next-line
-            $this->resolve(PostSeeder::class)->run();
+            $this->resolve(PostSeeder::class)->forAuthor($author)->run();
         }
     }
 }
